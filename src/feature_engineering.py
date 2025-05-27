@@ -24,14 +24,15 @@ def preprocess_arima(data: pd.DataFrame, path: str = path_time_series):
 
     # Проверка на пустые данные или если timestamp нет в данных
     if data.empty or 'timestamp' not in data.columns:
-        logger.warning("Пустой датафрейм или отсутствует колонка 'timestamp'.")
+        logger.warning(
+            "preprocess_arima - Пустой датафрейм или отсутствует колонка 'timestamp'.")
         return pd.DataFrame()
 
     # Делаем индекс timestamp
     data.set_index('timestamp', inplace=True)
     # Делаем ресемлинг
     time_series = data.resample('1H')['log_level'].size()
-    logger.info("Ресемплинг логов.")
+    logger.info("preprocess_arima - Ресемплинг логов.")
 
     # Удаляем последний час
     time_series = time_series[:-1]
@@ -39,12 +40,12 @@ def preprocess_arima(data: pd.DataFrame, path: str = path_time_series):
     # Проверка и преобразование в DataFrame, если это Series
     if isinstance(time_series, pd.Series):
         time_series = time_series.to_frame()
-        logger.info("Преобразовали Series в DataFrame.")
+        logger.info("preprocess_arima - Преобразовали Series в DataFrame.")
 
     # Проверка пути для сохранения
     if not os.path.exists(os.path.dirname(path)):
         logger.error(
-            f"Путь {os.path.dirname(path)} не существует.")
+            f"preprocess_arima - Путь {os.path.dirname(path)} не существует.")
         return pd.DataFrame()
 
     # Сохраняем временной ряд
@@ -60,20 +61,25 @@ def get_last_time(data: pd.DataFrame) -> Optional[str]:
     Returns:
         last_time (datetime): Возвращаем последнее время
     '''
+    if 'timestamp' not in data.columns:
+        logger.error(
+            "get_last_time - Колонка 'timestamp' отсутствует в данных.")
+        return None
+
     # Убираем строки, где в timestamp стоит текст 'timestamp' (защита от ошибок)
     data = data[data['timestamp'] != 'timestamp']
 
     if data.empty:
-        logger.error(f'Данных нет.')
+        logger.error(f'get_last_time - Данных нет.')
         return None
 
     last_time = data['timestamp'].max()
 
     if pd.isna(last_time):
-        logger.error(f'Не удалось извлечь дату.')
+        logger.error(f'get_last_time - Не удалось извлечь дату.')
         return None
 
     last_time = pd.to_datetime(last_time, format='%Y-%m-%d %H:%M:%S')
 
-    logger.info(f"Получаем последнее время: {last_time}")
+    logger.info(f"get_last_time - Получаем последнее время: {last_time}")
     return last_time

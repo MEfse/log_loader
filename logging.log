@@ -1094,3 +1094,721 @@ LINE 3: ...               WHERE timestamp >= NOW() - INTERVAL '27 min.'
 2025-05-07 09:15:12,657 - ERROR - Ошибка при соединении с БД: 'NoneType' object is not iterable
 2025-05-07 09:15:12,659 - INFO - Старт preprocess_arima.
 2025-05-07 09:15:12,659 - WARNING - Пустой датафрейм или отсутствует колонка 'timestamp'.
+2025-05-07 10:49:23,852 - INFO - Старт load_data_from_db.
+2025-05-07 10:49:23,861 - INFO - Файл C:\Users\JERR\Desktop\project\data\connect.csv загружен.
+2025-05-07 10:49:23,868 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-07 10:49:23,869 - INFO - Запрос всех данных из БД.
+2025-05-07 10:49:23,970 - ERROR - Ошибка при соединении с БД: 'NoneType' object is not iterable
+2025-05-07 10:49:23,972 - INFO - Старт preprocess_arima.
+2025-05-07 10:49:23,973 - WARNING - Пустой датафрейм или отсутствует колонка 'timestamp'.
+2025-05-07 10:52:07,325 - INFO - Старт load_data_from_db.
+2025-05-07 10:52:07,329 - INFO - Файл C:\Users\JERR\Desktop\project\data\connect.csv загружен.
+2025-05-07 10:52:07,333 - INFO - Параметры подключения: {'dbname': 'graylog', 'user': 'postgres', 'password': 'C60cdce0', 'host': '10.55.6.168', 'port': 5432}
+2025-05-07 10:52:07,334 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-07 10:52:07,338 - INFO - Запрос всех данных из БД.
+2025-05-07 10:52:07,458 - ERROR - Ошибка при соединении с БД: 'NoneType' object is not iterable
+2025-05-07 10:52:07,459 - INFO - Старт preprocess_arima.
+2025-05-07 10:52:07,460 - WARNING - Пустой датафрейм или отсутствует колонка 'timestamp'.
+2025-05-07 11:05:15,991 - INFO - Старт load_data_from_db.
+2025-05-07 11:05:15,996 - INFO - Файл C:\Users\JERR\Desktop\project\data\connect.csv загружен.
+2025-05-07 11:05:15,999 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-07 11:05:16,002 - INFO - Запрос всех данных из БД.
+2025-05-07 11:05:16,205 - ERROR - Ошибка при соединении с БД: 'NoneType' object is not iterable
+2025-05-07 11:05:16,207 - INFO - Старт preprocess_arima.
+2025-05-07 11:05:16,208 - WARNING - Пустой датафрейм или отсутствует колонка 'timestamp'.
+2025-05-07 13:38:37,894 - INFO - Параметры подключения загружены.
+2025-05-07 13:38:37,899 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-07 13:38:49,215 - INFO - Параметры подключения загружены.
+2025-05-07 13:38:49,219 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-07 13:38:49,221 - INFO - Запрос всех данных из БД.
+2025-05-08 18:54:29,980 - INFO - Параметры подключения загружены.
+2025-05-08 18:54:29,991 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 18:54:29,995 - INFO - Запрос всех данных из БД.
+2025-05-08 19:02:16,130 - INFO - Параметры подключения загружены.
+2025-05-08 19:02:16,139 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 19:02:16,142 - INFO - Запрос всех данных из БД.
+2025-05-08 19:11:26,198 - INFO - Параметры подключения загружены.
+2025-05-08 19:11:26,208 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 19:11:26,212 - INFO - Запрос всех данных из БД.
+2025-05-08 19:13:05,724 - INFO - Параметры подключения загружены.
+2025-05-08 19:13:05,730 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 19:13:05,734 - INFO - Запрос всех данных из БД.
+2025-05-08 19:14:30,454 - INFO - Параметры подключения загружены.
+2025-05-08 19:14:30,462 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 19:14:30,469 - INFO - Запрос всех данных из БД.
+2025-05-08 19:55:41,043 - INFO - Параметры подключения загружены.
+2025-05-08 19:55:41,049 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 19:55:41,051 - INFO - Запрос всех данных из БД.
+2025-05-08 20:01:09,280 - INFO - Параметры подключения загружены.
+2025-05-08 20:01:09,283 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 20:01:09,284 - INFO - Запрос всех данных из БД.
+2025-05-08 20:01:10,655 - ERROR - Запрос некорректен.
+2025-05-08 20:01:59,759 - INFO - Старт load_data_from_db.
+2025-05-08 20:01:59,763 - INFO - Параметры подключения загружены.
+2025-05-08 20:01:59,769 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-08 20:01:59,773 - INFO - Запрос всех данных из БД.
+2025-05-08 20:02:00,229 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-08 20:02:00,272 - ERROR - Запрос некорректен.
+2025-05-08 20:02:00,600 - ERROR - Ошибка при соединении с БД: [Errno 2] No such file or directory: 'C:\\data\\ARIMA\\data_tmp.tmp'
+2025-05-12 08:46:51,434 - ERROR - Ошибка info() missing 1 required positional argument: 'msg'
+2025-05-12 08:47:32,720 - ERROR - Ошибка Cannot save file into a non-existent directory: 'C:\data\ARIMA'
+2025-05-12 08:56:48,012 - ERROR - Ошибка Cannot save file into a non-existent directory: 'C:\data\ARIMA'
+2025-05-12 09:00:04,656 - INFO - Временный файл создан.
+2025-05-12 09:15:50,564 - INFO - Временный файл удален.
+2025-05-12 09:30:09,317 - ERROR - Ошибка [WinError 2] Не удается найти указанный файл: 'C:\\Users\\JERR\\Desktop\\project\\data\\ARIMA\\data_tmp.csv'
+2025-05-12 09:31:38,822 - ERROR - Ошибка [WinError 2] Не удается найти указанный файл: 'C:\\Users\\JERR\\Desktop\\project\\data\\ARIMA\\data_tmp.csv'
+2025-05-12 09:33:27,200 - ERROR - Ошибка [WinError 2] Не удается найти указанный файл: 'C:\\Users\\JERR\\Desktop\\project\\data\\ARIMA\\data_tmp.csv'
+2025-05-12 09:33:38,924 - INFO - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-12 09:33:38,925 - INFO - Временный файл создан.
+2025-05-12 09:35:05,789 - INFO - Временный файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-12 09:36:57,026 - INFO - Старт load_data_from_db.
+2025-05-12 09:36:57,049 - INFO - Параметры подключения загружены.
+2025-05-12 09:36:57,059 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 09:36:57,063 - INFO - Запрос всех данных из БД.
+2025-05-12 09:36:59,142 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-12 09:38:03,406 - INFO - Старт load_data_from_db.
+2025-05-12 09:38:03,413 - INFO - Параметры подключения загружены.
+2025-05-12 09:38:03,419 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 09:38:03,421 - INFO - Запрос всех данных из БД.
+2025-05-12 09:38:05,488 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-12 09:39:29,376 - INFO - Старт load_data_from_db.
+2025-05-12 09:39:29,381 - INFO - Параметры подключения загружены.
+2025-05-12 09:39:29,386 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 09:39:29,390 - INFO - Запрос всех данных из БД.
+2025-05-12 09:39:31,468 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-05-12 09:42:37,842 - INFO - Параметры подключения загружены.
+2025-05-12 09:43:06,534 - INFO - Параметры подключения загружены.
+2025-05-12 10:17:53,602 - INFO - Старт load_data_from_db.
+2025-05-12 10:17:53,609 - INFO - Параметры подключения загружены.
+2025-05-12 10:17:53,613 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 10:17:53,616 - INFO - Запрос всех данных из БД.
+2025-05-12 10:17:53,734 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-12 10:17:54,087 - ERROR - Запрос некорректен.
+2025-05-12 10:17:54,109 - ERROR - Ошибка при соединении с БД: No columns to parse from file
+2025-05-12 13:45:37,874 - INFO - Старт load_data_from_db.
+2025-05-12 13:45:37,882 - INFO - Параметры подключения загружены.
+2025-05-12 13:45:37,888 - INFO - Внутреннее подключение.
+2025-05-12 13:45:37,889 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 13:45:37,891 - ERROR - Данных нет.
+2025-05-12 13:45:37,892 - ERROR - Не удалось получить последнее время.
+2025-05-12 13:48:56,103 - INFO - Старт load_data_from_db.
+2025-05-12 13:48:56,109 - INFO - Параметры подключения загружены.
+2025-05-12 13:48:56,113 - INFO - Внутреннее подключение.
+2025-05-12 13:48:56,114 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 13:48:56,118 - ERROR - Данных нет.
+2025-05-12 13:48:56,119 - ERROR - Не удалось получить последнее время.
+2025-05-12 14:18:25,867 - INFO - Параметры подключения загружены.
+2025-05-12 14:18:25,872 - INFO - Внутреннее подключение.
+2025-05-12 14:18:25,873 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 14:18:25,877 - ERROR - Данных нет.
+2025-05-12 14:18:25,878 - ERROR - Не удалось получить последнее время.
+2025-05-12 14:18:25,883 - INFO - Временный файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-12 14:18:25,884 - INFO - Запрос данных за интервал: None
+2025-05-12 14:18:25,940 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message 
+                   FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+2025-05-12 14:18:25,976 - ERROR - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-05-12 14:43:32,293 - INFO - Старт load_data_from_db.
+2025-05-12 14:43:32,304 - INFO - Параметры подключения загружены.
+2025-05-12 14:43:32,310 - INFO - Внутреннее подключение.
+2025-05-12 14:43:32,311 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 14:43:32,315 - ERROR - Данных нет.
+2025-05-12 14:43:32,316 - ERROR - Не удалось получить последнее время.
+2025-05-12 15:04:13,389 - INFO - Старт load_data_from_db.
+2025-05-12 15:04:13,394 - INFO - Параметры подключения загружены.
+2025-05-12 15:04:13,397 - INFO - Внутреннее подключение.
+2025-05-12 15:04:13,398 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-12 15:04:13,402 - ERROR - Данных нет.
+2025-05-12 15:04:13,403 - ERROR - Не удалось получить последнее время.
+2025-05-12 15:07:21,080 - INFO - Старт load_data_from_db.
+2025-05-12 15:07:21,088 - INFO - Параметры подключения загружены.
+2025-05-12 15:07:21,094 - INFO - Внутреннее подключение.
+2025-05-12 15:07:21,095 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных (full_load = True).
+2025-05-12 15:07:21,100 - INFO - Временный файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv.
+2025-05-12 15:07:21,101 - INFO - Запрос всех данных из БД.
+2025-05-12 15:07:21,296 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-12 15:07:21,340 - ERROR - Запрос некорректен.
+2025-05-12 15:07:21,349 - ERROR - Ошибка при соединении с БД: No columns to parse from file
+2025-05-13 12:50:35,151 - INFO - Старт load_data_from_db.
+2025-05-13 12:50:35,170 - INFO - Параметры подключения загружены.
+2025-05-13 12:50:35,175 - INFO - Внутреннее подключение.
+2025-05-13 12:50:35,175 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных (full_load = True).
+2025-05-13 12:50:35,179 - INFO - Временный файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv.
+2025-05-13 12:50:35,179 - INFO - Запрос всех данных из БД.
+2025-05-13 12:50:35,264 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-13 12:50:35,832 - ERROR - Запрос некорректен.
+2025-05-13 12:50:35,838 - ERROR - Ошибка при соединении с БД: No columns to parse from file
+2025-05-13 12:52:38,861 - INFO - Старт load_data_from_db.
+2025-05-13 12:52:38,866 - INFO - Параметры подключения загружены.
+2025-05-13 12:52:38,869 - INFO - Внутреннее подключение.
+2025-05-13 12:52:38,870 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных (full_load = True).
+2025-05-13 12:52:38,878 - INFO - Временный файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv.
+2025-05-13 12:52:38,879 - INFO - Запрос всех данных из БД.
+2025-05-13 12:52:38,919 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-13 12:52:38,945 - ERROR - Запрос некорректен.
+2025-05-13 12:52:38,950 - ERROR - Ошибка при соединении с БД: No columns to parse from file
+2025-05-13 12:55:18,749 - INFO - Старт load_data_from_db.
+2025-05-13 12:55:18,757 - INFO - Параметры подключения загружены.
+2025-05-13 12:55:18,760 - INFO - Внутреннее подключение.
+2025-05-13 12:55:18,761 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных (full_load = True).
+2025-05-13 12:55:18,765 - INFO - Временный файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv.
+2025-05-13 12:55:18,765 - INFO - Запрос всех данных из БД.
+2025-05-13 12:55:18,805 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-13 12:55:18,831 - ERROR - Запрос некорректен.
+2025-05-13 12:55:18,838 - ERROR - Ошибка при соединении с БД: No columns to parse from file
+2025-05-13 12:59:46,063 - INFO - Старт load_data_from_db.
+2025-05-13 13:00:45,877 - INFO - Старт load_data_from_db.
+2025-05-13 13:00:45,883 - INFO - Параметры подключения загружены.
+2025-05-13 13:00:45,886 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден.
+2025-05-13 13:00:45,891 - INFO - Запрос всех данных из БД.
+2025-05-13 13:04:22,061 - INFO - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-13 13:04:22,079 - INFO - Добавлено 5000081 строк. Всего: 5000081
+2025-05-13 13:10:51,991 - INFO - Старт load_data_from_db.
+2025-05-13 13:10:52,000 - INFO - Параметры подключения загружены.
+2025-05-13 13:10:52,006 - INFO - Внутреннее подключение.
+2025-05-13 13:11:02,911 - INFO - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-13 13:11:03,051 - INFO - Получаем последнее время: 2025-05-13 13:00:45
+2025-05-13 13:11:03,101 - INFO - Интервал загрузки: 10 minutes
+2025-05-13 13:11:03,106 - INFO - Временный файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv.
+2025-05-13 13:11:03,107 - INFO - Запрос данных за интервал: 10 minutes
+2025-05-13 13:11:03,206 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message 
+                   FROM logs WHERE timestamp >= NOW() - INTERVAL '10 minutes'
+2025-05-13 13:11:14,127 - INFO - Временный файл удален.
+2025-05-13 13:11:15,686 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-13 13:11:15,687 - INFO - Добавлено 566 строк. Всего: 5000647
+2025-05-13 13:11:33,089 - INFO - Старт load_data_from_db.
+2025-05-13 13:11:33,093 - INFO - Параметры подключения загружены.
+2025-05-13 13:11:33,096 - INFO - Внутреннее подключение.
+2025-05-13 13:11:33,097 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных (full_load = True).
+2025-05-13 13:11:33,104 - INFO - Временный файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-13 13:11:33,105 - INFO - Запрос всех данных из БД.
+2025-05-13 13:11:33,165 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-13 13:17:54,350 - INFO - Временный файл удален.
+2025-05-14 10:23:03,746 - INFO - Старт load_data_from_db.
+2025-05-14 10:23:03,769 - INFO - Параметры подключения загружены.
+2025-05-14 10:23:03,776 - INFO - Внутреннее подключение.
+2025-05-14 10:23:03,776 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-14 10:23:03,781 - INFO - Временный файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-14 10:23:03,781 - INFO - Запрос всех данных из БД.
+2025-05-14 10:23:03,873 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message FROM logs;
+2025-05-14 10:23:09,044 - INFO - Загружено 100000 строк.
+2025-05-14 10:23:11,597 - INFO - Загружено 200000 строк.
+2025-05-14 10:23:13,912 - INFO - Загружено 300000 строк.
+2025-05-14 10:23:16,260 - INFO - Загружено 400000 строк.
+2025-05-14 10:23:18,551 - INFO - Загружено 500000 строк.
+2025-05-14 10:23:20,988 - INFO - Загружено 600000 строк.
+2025-05-14 10:23:23,360 - INFO - Загружено 700000 строк.
+2025-05-14 10:23:25,701 - INFO - Загружено 800000 строк.
+2025-05-14 10:23:28,184 - INFO - Загружено 900000 строк.
+2025-05-14 10:23:30,521 - INFO - Загружено 1000000 строк.
+2025-05-14 10:23:33,095 - INFO - Загружено 1100000 строк.
+2025-05-14 10:23:35,375 - INFO - Загружено 1200000 строк.
+2025-05-14 10:23:37,624 - INFO - Загружено 1300000 строк.
+2025-05-14 10:23:39,892 - INFO - Загружено 1400000 строк.
+2025-05-14 10:23:42,289 - INFO - Загружено 1500000 строк.
+2025-05-14 10:23:44,600 - INFO - Загружено 1600000 строк.
+2025-05-14 10:23:46,971 - INFO - Загружено 1700000 строк.
+2025-05-14 10:23:49,278 - INFO - Загружено 1800000 строк.
+2025-05-14 10:23:51,589 - INFO - Загружено 1900000 строк.
+2025-05-14 10:23:53,831 - INFO - Загружено 2000000 строк.
+2025-05-14 10:23:56,161 - INFO - Загружено 2100000 строк.
+2025-05-14 10:23:58,597 - INFO - Загружено 2200000 строк.
+2025-05-14 10:24:00,804 - INFO - Загружено 2300000 строк.
+2025-05-14 10:24:03,135 - INFO - Загружено 2400000 строк.
+2025-05-14 10:24:05,775 - INFO - Загружено 2500000 строк.
+2025-05-14 10:24:08,145 - INFO - Загружено 2600000 строк.
+2025-05-14 10:24:10,481 - INFO - Загружено 2700000 строк.
+2025-05-14 10:24:12,786 - INFO - Загружено 2800000 строк.
+2025-05-14 10:24:15,061 - INFO - Загружено 2900000 строк.
+2025-05-14 10:24:17,879 - INFO - Загружено 3000000 строк.
+2025-05-14 10:24:20,219 - INFO - Загружено 3100000 строк.
+2025-05-14 10:24:22,590 - INFO - Загружено 3200000 строк.
+2025-05-14 10:24:24,924 - INFO - Загружено 3300000 строк.
+2025-05-14 10:24:27,221 - INFO - Загружено 3400000 строк.
+2025-05-14 10:24:29,529 - INFO - Загружено 3500000 строк.
+2025-05-14 10:24:31,916 - INFO - Загружено 3600000 строк.
+2025-05-14 10:24:34,228 - INFO - Загружено 3700000 строк.
+2025-05-14 10:24:36,458 - INFO - Загружено 3800000 строк.
+2025-05-14 10:24:38,843 - INFO - Загружено 3900000 строк.
+2025-05-14 10:24:41,255 - INFO - Загружено 4000000 строк.
+2025-05-14 10:24:43,952 - INFO - Загружено 4100000 строк.
+2025-05-14 10:24:46,562 - INFO - Загружено 4200000 строк.
+2025-05-14 10:24:49,019 - INFO - Загружено 4300000 строк.
+2025-05-14 10:24:51,413 - INFO - Загружено 4400000 строк.
+2025-05-14 10:24:53,729 - INFO - Загружено 4500000 строк.
+2025-05-14 10:24:56,078 - INFO - Загружено 4600000 строк.
+2025-05-14 10:24:58,662 - INFO - Загружено 4700000 строк.
+2025-05-14 10:25:00,946 - INFO - Загружено 4800000 строк.
+2025-05-14 10:25:03,518 - INFO - Загружено 4900000 строк.
+2025-05-14 10:25:05,825 - INFO - Загружено 5000000 строк.
+2025-05-14 10:25:08,267 - INFO - Загружено 5100000 строк.
+2025-05-14 10:25:10,598 - INFO - Загружено 5200000 строк.
+2025-05-14 10:25:13,009 - INFO - Загружено 5300000 строк.
+2025-05-14 10:25:15,338 - INFO - Загружено 5400000 строк.
+2025-05-14 10:25:17,755 - INFO - Загружено 5500000 строк.
+2025-05-14 10:25:20,022 - INFO - Загружено 5600000 строк.
+2025-05-14 10:25:22,437 - INFO - Загружено 5700000 строк.
+2025-05-14 10:25:24,782 - INFO - Загружено 5800000 строк.
+2025-05-14 10:25:27,184 - INFO - Загружено 5900000 строк.
+2025-05-14 10:25:29,543 - INFO - Загружено 6000000 строк.
+2025-05-14 10:25:31,874 - INFO - Загружено 6100000 строк.
+2025-05-14 10:25:34,131 - INFO - Загружено 6200000 строк.
+2025-05-14 10:25:36,563 - INFO - Загружено 6300000 строк.
+2025-05-14 10:25:38,841 - INFO - Загружено 6400000 строк.
+2025-05-14 10:25:41,107 - INFO - Загружено 6500000 строк.
+2025-05-14 10:25:43,305 - INFO - Загружено 6600000 строк.
+2025-05-14 10:25:45,563 - INFO - Загружено 6700000 строк.
+2025-05-14 10:25:47,944 - INFO - Загружено 6800000 строк.
+2025-05-14 10:25:50,395 - INFO - Загружено 6900000 строк.
+2025-05-14 10:25:52,820 - INFO - Загружено 7000000 строк.
+2025-05-14 10:25:55,131 - INFO - Загружено 7100000 строк.
+2025-05-14 10:25:57,432 - INFO - Загружено 7200000 строк.
+2025-05-14 10:25:59,631 - INFO - Загружено 7300000 строк.
+2025-05-14 10:26:02,111 - INFO - Загружено 7400000 строк.
+2025-05-14 10:26:04,518 - INFO - Загружено 7500000 строк.
+2025-05-14 10:26:06,977 - INFO - Загружено 7600000 строк.
+2025-05-14 10:26:09,213 - INFO - Загружено 7700000 строк.
+2025-05-14 10:26:11,585 - INFO - Загружено 7800000 строк.
+2025-05-14 10:26:13,938 - INFO - Загружено 7900000 строк.
+2025-05-14 10:26:16,325 - INFO - Загружено 8000000 строк.
+2025-05-14 10:26:18,606 - INFO - Загружено 8100000 строк.
+2025-05-14 10:26:20,889 - INFO - Загружено 8200000 строк.
+2025-05-14 10:26:23,200 - INFO - Загружено 8300000 строк.
+2025-05-14 10:26:25,536 - INFO - Загружено 8400000 строк.
+2025-05-14 10:26:28,038 - INFO - Загружено 8500000 строк.
+2025-05-14 10:26:30,301 - INFO - Загружено 8600000 строк.
+2025-05-14 10:26:32,794 - INFO - Загружено 8700000 строк.
+2025-05-14 10:26:35,050 - INFO - Загружено 8800000 строк.
+2025-05-14 10:26:37,568 - INFO - Загружено 8900000 строк.
+2025-05-14 10:26:39,930 - INFO - Загружено 9000000 строк.
+2025-05-14 10:26:42,413 - INFO - Загружено 9100000 строк.
+2025-05-14 10:26:44,667 - INFO - Загружено 9200000 строк.
+2025-05-14 10:26:47,089 - INFO - Загружено 9300000 строк.
+2025-05-14 10:26:49,494 - INFO - Загружено 9400000 строк.
+2025-05-14 10:26:52,006 - INFO - Загружено 9500000 строк.
+2025-05-14 10:26:54,434 - INFO - Загружено 9600000 строк.
+2025-05-14 10:26:56,896 - INFO - Загружено 9700000 строк.
+2025-05-14 10:26:59,178 - INFO - Загружено 9800000 строк.
+2025-05-14 10:27:01,669 - INFO - Загружено 9900000 строк.
+2025-05-14 10:27:03,875 - INFO - Загружено 10000000 строк.
+2025-05-14 10:27:06,103 - INFO - Загружено 10100000 строк.
+2025-05-14 10:27:08,369 - INFO - Загружено 10200000 строк.
+2025-05-14 10:27:10,543 - INFO - Загружено 10300000 строк.
+2025-05-14 10:27:12,899 - INFO - Загружено 10400000 строк.
+2025-05-14 10:27:14,029 - INFO - Загружено 10500000 строк.
+2025-05-14 10:28:00,631 - INFO - Временный файл удален.
+2025-05-14 10:28:31,893 - INFO - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-14 10:28:31,893 - INFO - Добавлено 5067711 строк. Всего: 5067711
+2025-05-14 10:29:10,838 - INFO - Старт load_data_from_db.
+2025-05-14 10:29:10,843 - INFO - Параметры подключения загружены.
+2025-05-14 10:29:10,847 - INFO - Внутреннее подключение.
+2025-05-14 10:29:22,221 - INFO - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-14 10:29:22,379 - INFO - Получаем последнее время: 2025-05-14 10:23:03
+2025-05-14 10:29:22,434 - INFO - Интервал загрузки: 6 minutes
+2025-05-14 10:29:22,440 - INFO - Временный файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\data_tmp.csv (перезапись).
+2025-05-14 10:29:22,442 - INFO - Запрос данных за интервал: 6 minutes
+2025-05-14 10:29:22,572 - INFO - Выполняется запрос SELECT timestamp, log_level, log_type, message 
+                   FROM logs WHERE timestamp >= NOW() - INTERVAL '6 minutes'
+2025-05-14 10:29:30,788 - INFO - Временный файл удален.
+2025-05-14 10:29:33,024 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 10:29:33,025 - INFO - Добавлено 308 строк. Всего: 5068019
+2025-05-14 15:26:43,528 - INFO - Старт load_data_from_db.
+2025-05-14 15:26:43,537 - INFO - Параметры подключения загружены.
+2025-05-14 15:26:43,544 - INFO - Внутреннее подключение.
+2025-05-14 15:27:22,659 - INFO - Старт load_data_from_db.
+2025-05-14 15:27:22,664 - INFO - Параметры подключения загружены.
+2025-05-14 15:27:22,667 - INFO - Внутреннее подключение.
+2025-05-14 15:28:11,451 - INFO - Старт load_data_from_db.
+2025-05-14 15:28:11,455 - INFO - Параметры подключения загружены.
+2025-05-14 15:28:11,458 - INFO - Внутреннее подключение.
+2025-05-14 15:28:11,459 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-14 15:28:11,466 - INFO - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-14 15:28:11,466 - INFO - Запрос всех данных из БД.
+2025-05-14 15:28:11,596 - ERROR - Ошибка при соединении с БД: 'NoneType' object is not iterable
+2025-05-14 15:32:20,351 - INFO - Старт load_data_from_db.
+2025-05-14 15:32:20,356 - INFO - Параметры подключения загружены.
+2025-05-14 15:32:20,359 - INFO - Внутреннее подключение.
+2025-05-14 15:32:20,361 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 15:32:20,369 - ERROR - Данных нет.
+2025-05-14 15:32:20,370 - ERROR - Не удалось получить последнее время.
+2025-05-14 15:36:57,318 - INFO - Старт load_data_from_db.
+2025-05-14 15:36:57,323 - INFO - Параметры подключения загружены.
+2025-05-14 15:36:57,326 - INFO - Внутреннее подключение.
+2025-05-14 15:36:57,329 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 15:36:57,333 - ERROR - Данных нет.
+2025-05-14 15:36:57,334 - ERROR - Не удалось получить последнее время.
+2025-05-14 15:40:31,952 - INFO - Старт load_data_from_db.
+2025-05-14 15:40:31,958 - INFO - Параметры подключения загружены.
+2025-05-14 15:40:31,962 - INFO - Внутреннее подключение.
+2025-05-14 15:40:31,965 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 15:40:31,968 - ERROR - Данных нет.
+2025-05-14 15:40:31,969 - ERROR - Не удалось получить последнее время.
+2025-05-14 16:22:38,061 - INFO - Старт load_data_from_db.
+2025-05-14 16:22:38,069 - INFO - Параметры подключения загружены.
+2025-05-14 16:22:38,077 - INFO - Внутреннее подключение.
+2025-05-14 16:22:38,078 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 16:22:38,082 - ERROR - Данных нет.
+2025-05-14 16:22:38,083 - ERROR - Не удалось получить последнее время.
+2025-05-14 16:23:27,978 - INFO - Старт load_data_from_db.
+2025-05-14 16:23:27,991 - INFO - Параметры подключения загружены.
+2025-05-14 16:23:27,997 - INFO - Внутреннее подключение.
+2025-05-14 16:23:28,000 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 16:23:28,003 - ERROR - Данных нет.
+2025-05-14 16:23:28,003 - ERROR - Не удалось получить последнее время.
+2025-05-14 16:23:33,732 - INFO - Старт load_data_from_db.
+2025-05-14 16:23:33,738 - INFO - Параметры подключения загружены.
+2025-05-14 16:23:33,742 - INFO - Внутреннее подключение.
+2025-05-14 16:23:33,744 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv пуст.
+2025-05-14 16:23:33,747 - ERROR - Данных нет.
+2025-05-14 16:23:33,748 - ERROR - Не удалось получить последнее время.
+2025-05-14 16:31:09,807 - INFO - Старт load_data_from_db.
+2025-05-14 16:31:09,821 - INFO - Параметры подключения загружены.
+2025-05-14 16:31:09,827 - INFO - Внутреннее подключение.
+2025-05-14 16:31:09,827 - WARNING - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-14 16:31:09,834 - INFO - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-14 16:31:09,835 - INFO - Запрос всех данных из БД.
+2025-05-14 16:31:12,361 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:14,669 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:17,085 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:19,369 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:21,899 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:25,156 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:27,978 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:30,662 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:33,375 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:35,895 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:38,458 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:40,953 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:43,560 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:46,127 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:48,910 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:51,576 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:54,156 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:56,881 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:31:59,532 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:02,121 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:04,871 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:07,338 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:09,962 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:12,789 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:15,410 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:18,234 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:20,827 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:23,260 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:26,086 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:28,631 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:31,103 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:33,995 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:36,525 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:39,159 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:42,411 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:44,980 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:47,451 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:51,292 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:53,936 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:56,760 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:32:59,695 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:02,496 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:06,155 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:09,194 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:11,952 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:14,503 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:17,907 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:20,842 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:23,573 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:26,085 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:28,799 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:31,911 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:34,627 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:37,475 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:40,247 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:42,779 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:47,763 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:50,944 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:53,820 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:56,795 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:33:59,747 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:02,701 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:06,757 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:10,430 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:13,719 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:16,750 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:19,583 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:22,416 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:25,188 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:27,840 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:30,621 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:33,622 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:37,511 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:40,608 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:43,286 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:46,294 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:49,422 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:52,045 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:54,711 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:34:58,078 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:00,915 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:03,724 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:06,827 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:09,383 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:11,965 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:14,617 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:17,273 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:19,921 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:22,497 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:25,825 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:28,769 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:31,529 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:34,605 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:37,356 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:40,443 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:44,238 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:47,167 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:49,911 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:52,845 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:55,588 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:35:58,414 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:01,229 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:03,954 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:07,662 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:10,660 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:13,597 - INFO - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-14 16:36:13,640 - INFO - Всего загружено 10593859 строк.
+2025-05-14 16:36:13,722 - ERROR - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-20 11:05:25,128 - INFO - Старт load_data_from_db.
+2025-05-20 11:05:25,148 - INFO - Параметры подключения загружены.
+2025-05-20 11:05:25,158 - INFO - Внутреннее подключение.
+2025-05-20 11:05:25,163 - ERROR - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-20 11:05:25,167 - ERROR - Данных нет.
+2025-05-20 11:05:25,167 - ERROR - Не удалось получить последнее время.
+2025-05-20 11:09:46,646 - INFO - Старт load_data_from_db.
+2025-05-20 11:09:46,657 - INFO - Параметры подключения загружены.
+2025-05-20 11:09:46,665 - INFO - load_data_from_db - Внутреннее подключение.
+2025-05-20 11:09:46,672 - ERROR - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-20 11:09:46,678 - ERROR - Данных нет.
+2025-05-20 11:09:46,680 - ERROR - Не удалось получить последнее время.
+2025-05-20 11:10:04,031 - INFO - Старт load_data_from_db.
+2025-05-20 11:10:04,036 - INFO - Параметры подключения загружены.
+2025-05-20 11:10:04,041 - INFO - load_data_from_db - Внутреннее подключение.
+2025-05-20 11:10:04,047 - ERROR - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-20 11:10:04,051 - ERROR - Данных нет.
+2025-05-20 11:10:04,052 - ERROR - Не удалось получить последнее время.
+2025-05-20 11:25:17,288 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-20 11:25:17,297 - INFO - Параметры подключения загружены.
+2025-05-20 11:25:17,303 - INFO - load_data_from_db - Внутреннее подключение.
+2025-05-20 11:25:17,311 - ERROR - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-20 11:25:17,315 - ERROR - Данных нет.
+2025-05-20 11:25:17,315 - ERROR - get_interval - Не удалось получить последнее время.
+2025-05-21 09:42:43,942 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 09:42:43,958 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 09:42:43,964 - INFO - connect - Внутреннее подключение.
+2025-05-21 09:42:43,973 - ERROR - load_csv_file - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-21 09:42:43,977 - ERROR - get_last_time - Данных нет.
+2025-05-21 09:42:43,978 - ERROR - get_interval - Не удалось получить последнее время.
+2025-05-21 09:47:04,940 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 09:47:04,947 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 09:47:04,952 - INFO - connect - Внутреннее подключение.
+2025-05-21 09:47:04,953 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 09:47:04,958 - INFO - save_csv_file - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-21 09:47:04,959 - INFO - build_query - Запрос всех данных из БД.
+2025-05-21 09:47:08,974 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:47:11,472 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:47:11,487 - ERROR - load_data_from_db - Ошибка при соединении с БД: local variable 'total_rows' referenced before assignment
+2025-05-21 09:48:06,441 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 09:48:06,446 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 09:48:06,452 - INFO - connect - Внутреннее подключение.
+2025-05-21 09:48:06,453 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 09:48:06,457 - INFO - save_csv_file - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-21 09:48:06,458 - INFO - build_query - Запрос всех данных из БД.
+2025-05-21 09:48:09,311 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:11,742 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:14,434 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:16,902 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:20,017 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:23,418 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:26,160 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:28,628 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:31,454 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:34,926 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:38,372 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:41,111 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:43,997 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:46,940 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:49,868 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:53,442 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:56,263 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:48:59,260 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:49:02,323 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:49:04,827 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:49:07,762 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:49:10,511 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:49:14,239 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:53:03,853 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 09:53:03,872 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 09:53:03,881 - INFO - connect - Внутреннее подключение.
+2025-05-21 09:53:03,882 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 09:53:03,887 - INFO - save_csv_file - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-21 09:53:03,887 - INFO - build_query - Debug запрос
+2025-05-21 09:53:06,512 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:53:09,373 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:53:10,865 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 09:53:10,883 - INFO - load_data_from_db - Всего загружено 250000 строк.
+2025-05-21 09:53:10,905 - ERROR - load_csv_file - Ошибка при загрузке файл логов: Missing column provided to 'parse_dates': 'timestamp'
+2025-05-21 10:02:31,667 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 10:02:31,673 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 10:02:31,677 - INFO - connect - Внутреннее подключение.
+2025-05-21 10:02:31,678 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 10:02:31,685 - INFO - save_csv_file - Файл сохранён в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv (перезапись).
+2025-05-21 10:02:31,687 - INFO - build_query - Debug запрос
+2025-05-21 10:02:34,377 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:02:36,736 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:02:38,008 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:02:38,032 - INFO - load_data_from_db - Всего загружено 250000 строк.
+2025-05-21 10:02:38,562 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 10:03:39,486 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 10:03:39,491 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 10:03:39,493 - INFO - connect - Внутреннее подключение.
+2025-05-21 10:03:40,052 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 10:03:40,066 - INFO - get_last_time - Получаем последнее время: 2025-03-27 08:15:12
+2025-05-21 10:03:40,071 - INFO - get_interval - Интервал загрузки: 79308 minutes
+2025-05-21 10:03:40,071 - INFO - build_query - Debug запрос
+2025-05-21 10:03:42,527 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:03:45,045 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:03:46,259 - INFO - save_csv_file - Файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:03:46,274 - INFO - load_data_from_db - Всего загружено 250000 строк.
+2025-05-21 10:03:47,342 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 10:55:45,941 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 10:55:45,950 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 10:55:45,958 - INFO - connect - Внутреннее подключение.
+2025-05-21 10:55:45,959 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 10:55:45,966 - INFO - save_csv_file - файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:55:45,967 - INFO - build_query - Debug запрос
+2025-05-21 10:55:52,232 - INFO - load_data_from_db - Всего загружено 250000 строк.
+2025-05-21 10:55:52,790 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 10:57:03,274 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 10:57:03,279 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 10:57:03,281 - INFO - connect - Внутреннее подключение.
+2025-05-21 10:57:03,282 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 10:57:03,290 - INFO - save_csv_file - файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 10:57:03,290 - INFO - build_query - Debug запрос
+2025-05-21 10:57:09,472 - INFO - load_data_from_db - Всего загружено 250000 строк.
+2025-05-21 10:57:10,075 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:01:40,720 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:01:40,725 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:01:40,728 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:01:41,211 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:01:41,229 - INFO - get_last_time - Получаем последнее время: 2025-04-01 12:27:16
+2025-05-21 11:01:41,232 - INFO - get_interval - Интервал загрузки: 71914 minutes
+2025-05-21 11:01:41,233 - INFO - build_query - Запрос данных за интервал: 71914 minutes
+2025-05-21 11:02:06,769 - INFO - load_data_from_db - Добавлено 500000 строк.
+2025-05-21 11:02:19,349 - INFO - load_data_from_db - Добавлено 1000000 строк.
+2025-05-21 11:02:32,846 - INFO - load_data_from_db - Добавлено 1500000 строк.
+2025-05-21 11:02:46,717 - INFO - load_data_from_db - Добавлено 2000000 строк.
+2025-05-21 11:02:59,465 - INFO - load_data_from_db - Добавлено 2500000 строк.
+2025-05-21 11:03:14,384 - INFO - load_data_from_db - Добавлено 3000000 строк.
+2025-05-21 11:03:29,367 - INFO - load_data_from_db - Добавлено 3500000 строк.
+2025-05-21 11:03:45,819 - INFO - load_data_from_db - Добавлено 4000000 строк.
+2025-05-21 11:03:59,710 - INFO - load_data_from_db - Добавлено 4500000 строк.
+2025-05-21 11:04:16,570 - INFO - load_data_from_db - Добавлено 5000000 строк.
+2025-05-21 11:04:32,622 - INFO - load_data_from_db - Добавлено 5500000 строк.
+2025-05-21 11:04:52,735 - INFO - load_data_from_db - Добавлено 6000000 строк.
+2025-05-21 11:05:08,039 - INFO - load_data_from_db - Добавлено 6500000 строк.
+2025-05-21 11:05:22,931 - INFO - load_data_from_db - Добавлено 7000000 строк.
+2025-05-21 11:05:23,028 - INFO - load_data_from_db - Всего загружено 7331527 строк.
+2025-05-21 11:05:54,193 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:07:05,489 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:07:05,497 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:07:05,503 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:07:24,372 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:07:24,587 - INFO - get_last_time - Получаем последнее время: 2025-05-21 11:01:40
+2025-05-21 11:07:24,680 - INFO - get_interval - Интервал загрузки: 5 minutes
+2025-05-21 11:07:24,681 - INFO - build_query - Запрос данных за интервал: 5 minutes
+2025-05-21 11:07:33,059 - INFO - load_data_from_db - Всего загружено 497 строк.
+2025-05-21 11:07:59,479 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:08:06,303 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:08:06,308 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:08:06,312 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:08:27,343 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:08:27,689 - INFO - get_last_time - Получаем последнее время: 2025-05-21 11:07:23
+2025-05-21 11:08:27,768 - INFO - get_interval - Интервал загрузки: 1 minutes
+2025-05-21 11:08:27,769 - INFO - build_query - Запрос данных за интервал: 1 minutes
+2025-05-21 11:08:37,033 - INFO - load_data_from_db - Всего загружено 100 строк.
+2025-05-21 11:09:12,786 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:18:12,205 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:18:12,211 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:18:12,216 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:18:12,218 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 11:18:12,227 - INFO - save_csv_file - файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 11:18:12,228 - INFO - build_query - Запрос всех данных из БД.
+2025-05-21 11:18:36,745 - INFO - load_data_from_db - Добавлено 500000 строк.
+2025-05-21 11:18:50,232 - INFO - load_data_from_db - Добавлено 1000000 строк.
+2025-05-21 11:19:03,412 - INFO - load_data_from_db - Добавлено 1500000 строк.
+2025-05-21 11:19:16,311 - INFO - load_data_from_db - Добавлено 2000000 строк.
+2025-05-21 11:19:28,445 - INFO - load_data_from_db - Добавлено 2500000 строк.
+2025-05-21 11:19:40,639 - INFO - load_data_from_db - Добавлено 3000000 строк.
+2025-05-21 11:19:53,060 - INFO - load_data_from_db - Добавлено 3500000 строк.
+2025-05-21 11:20:05,346 - INFO - load_data_from_db - Добавлено 4000000 строк.
+2025-05-21 11:20:18,085 - INFO - load_data_from_db - Добавлено 4500000 строк.
+2025-05-21 11:20:30,156 - INFO - load_data_from_db - Добавлено 5000000 строк.
+2025-05-21 11:20:44,466 - INFO - load_data_from_db - Добавлено 5500000 строк.
+2025-05-21 11:20:57,119 - INFO - load_data_from_db - Добавлено 6000000 строк.
+2025-05-21 11:21:09,741 - INFO - load_data_from_db - Добавлено 6500000 строк.
+2025-05-21 11:21:22,244 - INFO - load_data_from_db - Добавлено 7000000 строк.
+2025-05-21 11:21:34,696 - INFO - load_data_from_db - Добавлено 7500000 строк.
+2025-05-21 11:21:47,436 - INFO - load_data_from_db - Добавлено 8000000 строк.
+2025-05-21 11:22:00,651 - INFO - load_data_from_db - Добавлено 8500000 строк.
+2025-05-21 11:22:13,692 - INFO - load_data_from_db - Добавлено 9000000 строк.
+2025-05-21 11:22:26,871 - INFO - load_data_from_db - Добавлено 9500000 строк.
+2025-05-21 11:22:39,050 - INFO - load_data_from_db - Добавлено 10000000 строк.
+2025-05-21 11:22:51,871 - INFO - load_data_from_db - Добавлено 10500000 строк.
+2025-05-21 11:23:04,109 - INFO - load_data_from_db - Добавлено 11000000 строк.
+2025-05-21 11:23:08,263 - INFO - load_data_from_db - Добавлено 11500000 строк.
+2025-05-21 11:23:08,300 - INFO - load_data_from_db - Всего загружено 11673151 строк.
+2025-05-21 11:23:38,217 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:26:00,885 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:26:00,890 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:26:00,894 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:26:00,895 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 11:26:00,903 - INFO - save_csv_file - файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 11:26:00,904 - INFO - build_query - Запрос всех данных из БД.
+2025-05-21 11:26:24,900 - INFO - load_data_from_db - Добавлено 500000 строк.
+2025-05-21 11:26:37,098 - INFO - load_data_from_db - Добавлено 1000000 строк.
+2025-05-21 11:26:49,013 - INFO - load_data_from_db - Добавлено 1500000 строк.
+2025-05-21 11:27:00,951 - INFO - load_data_from_db - Добавлено 2000000 строк.
+2025-05-21 11:27:12,678 - INFO - load_data_from_db - Добавлено 2500000 строк.
+2025-05-21 11:27:24,565 - INFO - load_data_from_db - Добавлено 3000000 строк.
+2025-05-21 11:27:36,584 - INFO - load_data_from_db - Добавлено 3500000 строк.
+2025-05-21 11:27:48,373 - INFO - load_data_from_db - Добавлено 4000000 строк.
+2025-05-21 11:28:00,370 - INFO - load_data_from_db - Добавлено 4500000 строк.
+2025-05-21 11:28:12,334 - INFO - load_data_from_db - Добавлено 5000000 строк.
+2025-05-21 11:28:24,368 - INFO - load_data_from_db - Добавлено 5500000 строк.
+2025-05-21 11:28:36,170 - INFO - load_data_from_db - Добавлено 6000000 строк.
+2025-05-21 11:28:49,819 - INFO - load_data_from_db - Добавлено 6500000 строк.
+2025-05-21 11:29:01,378 - INFO - load_data_from_db - Добавлено 7000000 строк.
+2025-05-21 11:29:13,190 - INFO - load_data_from_db - Добавлено 7500000 строк.
+2025-05-21 11:29:24,771 - INFO - load_data_from_db - Добавлено 8000000 строк.
+2025-05-21 11:29:36,518 - INFO - load_data_from_db - Добавлено 8500000 строк.
+2025-05-21 11:29:48,201 - INFO - load_data_from_db - Добавлено 9000000 строк.
+2025-05-21 11:29:59,795 - INFO - load_data_from_db - Добавлено 9500000 строк.
+2025-05-21 11:30:11,415 - INFO - load_data_from_db - Добавлено 10000000 строк.
+2025-05-21 11:30:23,453 - INFO - load_data_from_db - Добавлено 10500000 строк.
+2025-05-21 11:30:35,362 - INFO - load_data_from_db - Добавлено 11000000 строк.
+2025-05-21 11:30:39,457 - INFO - load_data_from_db - Добавлено 11500000 строк.
+2025-05-21 11:30:39,491 - INFO - load_data_from_db - Всего загружено 11673942 строк.
+2025-05-21 11:31:06,740 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.
+2025-05-21 11:57:48,630 - INFO - load_data_from_db - Старт load_data_from_db.
+2025-05-21 11:57:48,636 - INFO - load_connect_csv - Параметры подключения загружены.
+2025-05-21 11:57:48,641 - INFO - connect - Внутреннее подключение.
+2025-05-21 11:57:48,641 - WARNING - load_data_from_db - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv не найден. Загрузка всех данных.
+2025-05-21 11:57:48,648 - INFO - save_csv_file - файл добавлен в C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv.
+2025-05-21 11:57:48,649 - INFO - build_query - Запрос всех данных из БД.
+2025-05-21 12:02:42,239 - INFO - load_data_from_db - Всего загружено 11677118 строк.
+2025-05-21 12:03:08,265 - INFO - load_csv_file - Файл логов C:\Users\JERR\Desktop\project\data\ARIMA\recent_logs.csv загружен.

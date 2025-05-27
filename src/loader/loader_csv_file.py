@@ -4,46 +4,46 @@ from warnings import filterwarnings
 from typing import Optional, Dict, List
 
 from src.config.logger_config import logger
-from src.config.path_config import path_connect
-
-filterwarnings("ignore", category=UserWarning,
-               message='.*pandas only supports SQLAlchemy connectable.*')
 
 
-def load_connect_csv(path: str = path_connect) -> Optional[Dict[str, str]]:
+def load_connect_csv(path) -> Optional[Dict[str, str]]:
     '''Загружает параметры для подключения к PostgreSQL из файла connect.csv
 
     Args: 
-        path (str): Путь до файла connect.csv (по умолчанию)
+        path (str): Путь до файла
 
     Returns:
-        Возвращает словарь с ключами: dbname, user, password, host, port
+        (Dict[str, str]): Возвращает словарь с ключами: dbname, user, password, host, port
     '''
 
     # Загружаем данные для файла connect.csv
     try:
         data = pd.read_csv(path)
-        logger.info(f'Файл {path} загружен.')
+        logger.info(f'load_connect_csv - Параметры подключения загружены.')
         return data.to_dict(orient='records')[0]
 
     # Обработка исключений
     except FileNotFoundError:
-        logger.error(f'Файл {path} не найден.')
+        logger.error(
+            f'load_connect_csv - Не удалось загрузить параметры подключения. Файл не найден.')
         return None
     except pd.errors.EmptyDataError:
-        logger.error(f'Файл {path} пуст.')
+        logger.error(
+            f'load_connect_csv - Не удалось загрузить параметры подключения. Файл пуст.')
         return None
     except Exception as e:
-        logger.error(f'Ошибка при загрузке параметров подключения {e}')
+        logger.error(
+            f'load_connect_csv - Ошибка при загрузке параметров подключения {e}')
+        return None
 
 
-def save_connect_csv(data, path: str = path_connect, overwrite=False):
+def save_connect_csv(data, path, overwrite=False):
     '''Сохраняет параметры для подключения к PostgreSQL
 
     Args: 
-        data (DataFrame): Передаем данные для в записи в connect.csv
-        path_connect (str): Передаем путь для подключения к connect.csv
-        overwrite (bool): Требуется ли перезапись файла connect.csv
+        data (DataFrame): Передаем данные для в записи в файл
+        path_connect (str): Передаем путь для подключения к файлу
+        overwrite (bool): Требуется ли перезапись файла
 
     Returns:
 
@@ -54,24 +54,25 @@ def save_connect_csv(data, path: str = path_connect, overwrite=False):
     if isinstance(data, (list, pd.DataFrame)):
         data = pd.DataFrame(data).T
         data.columns = columns
-        logger.info(f'Данные преобразованы в DataFrame.')
+        logger.info(f'save_connect_csv - Данные преобразованы в DataFrame.')
     elif isinstance(data, dict):
         data = pd.DataFrame([data])
         data.columns = columns
-        logger.info(f'Данные преобразованы в DataFrame.')
+        logger.info(f'save_connect_csv - Данные преобразованы в DataFrame.')
 
     # Проверка на существование файла
     if os.path.exists(path) and not overwrite:
         logger.info(
-            f'Файл {path} уже существует. Установите overwrite=True для перезаписи.')
+            f'save_connect_csv - Файл {path} уже существует. Установите overwrite=True для перезаписи.')
         return
 
     # Сохраняем файл
     try:
         data.to_csv(path, index=False, columns=columns)
-        logger.info(f'Файл {path} сохранен.')
+        logger.info(f'save_connect_csv - Файл {path} сохранен.')
     except Exception as e:
-        logger.error(f'Ошибка при сохранении файла {path}: {e}')
+        logger.error(
+            f'save_connect_csv - Ошибка при сохранении файла {path}: {e}')
 
 
 def load_csv_file(path: str, parse_dates: Optional[List[str]] = None,
@@ -87,18 +88,21 @@ def load_csv_file(path: str, parse_dates: Optional[List[str]] = None,
         file_desc (str): Название файла в логах для читаемости
 
     Returns:
-        DataFrame: Загруженный DataFrame или пустой DataFrame с нужными колонками
+        (DataFrame): Загруженный DataFrame или пустой DataFrame с нужными колонками
     '''
     try:
         data = pd.read_csv(path, parse_dates=parse_dates)
-        logger.info(f'{file_desc.capitalize()} {path} загружен.')
+        logger.info(
+            f'load_csv_file - {file_desc.capitalize()} {path} загружен.')
         return data
     except FileNotFoundError:
-        logger.warning(f'{file_desc.capitalize()} {path} не найден.')
+        logger.warning(
+            f'load_csv_file - {file_desc.capitalize()} {path} не найден.')
     except pd.errors.EmptyDataError:
-        logger.warning(f'{file_desc.capitalize()} {path} пуст.')
+        logger.warning(
+            f'load_csv_file - {file_desc.capitalize()} {path} пуст.')
     except Exception as e:
-        logger.error(f'Ошибка при загрузке {file_desc}: {e}')
+        logger.error(f'load_csv_file - Ошибка при загрузке {file_desc}: {e}')
 
     # Возврат пустого фрейма с нужными колонками (если заданы)
     if expected_columns:
@@ -109,6 +113,7 @@ def load_csv_file(path: str, parse_dates: Optional[List[str]] = None,
 def save_csv_file(data: pd.DataFrame,
                   path: str,
                   append: bool = True,
+                  log_success=True,
                   file_desc: str = "файл") -> None:
     '''
     Универсальная функция сохранения DataFrame в CSV, с добавлением новых данных.
@@ -116,30 +121,35 @@ def save_csv_file(data: pd.DataFrame,
     Args:
         data (DataFrame): Данные для сохранения
         path (str): Путь к файлу
-        append (bool): Добавлять в файл (по умолчанию True). Если False — перезаписать файл.
+        append (bool): Добавлять в файл. Если False — перезаписать файл.
+
         file_desc (str): Название файла для логирования
 
     Returns:
-        None
+
     '''
+    # Обработка исключения, если data не DataFrame
     if not isinstance(data, pd.DataFrame):
-        logger.error(f"{file_desc.capitalize()} не является DataFrame.")
+        logger.error(
+            f"save_csv_file - {file_desc.capitalize()} не является DataFrame.")
         return
 
+    # Сохраняем индекс, data.index не временной
     save_index = not isinstance(data.index, pd.RangeIndex)
 
     try:
         # Добавляем в существующий файл
-        if append and os.path.exists(path):
-            data.to_csv(path, mode='a', header=False, index=save_index)
-            logger.info(f"{file_desc.capitalize()} добавлен в {path}.")
-        else:
-            # Перезапись или создание файла
-            data.to_csv(path, index=save_index)
-            logger.info(
-                f"{file_desc.capitalize()} сохранён в {path} (перезапись).")
+        mode = 'a' if append else 'w'
+        header = not append or not os.path.exists(path)
+        data.to_csv(path, mode=mode, header=header, index=save_index)
+
+        if log_success:
+            action = 'добавлен' if append else 'сохранен'
+            logger.info(f"save_csv_file - {file_desc} {action} в {path}.")
+
     except Exception as e:
-        logger.error(f"Ошибка при сохранении {file_desc} {path}: {e}")
+        logger.error(
+            f"save_csv_file - Ошибка при сохранении {file_desc} {path}: {e}")
 
 
 def load_recent_logs(path):

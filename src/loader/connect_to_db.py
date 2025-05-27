@@ -4,10 +4,10 @@ import psycopg2
 import csv
 from tqdm import tqdm
 from warnings import filterwarnings
-from typing import Optional
+from typing import Optional, Dict
 from datetime import datetime
 
-from src.config.path_config import path_logs, path_tmp
+from src.config.path_config import path_logs, path_tmp, path_inconnect, path_exconnect
 from src.loader.loader_csv_file import load_recent_logs, save_csv_file, load_connect_csv
 from src.config.logger_config import logger
 from src.feature_engineering import get_last_time
@@ -18,142 +18,177 @@ filterwarnings("ignore", category=UserWarning,
 
 def load_data_from_db(full_load: bool = False,
                       path_logs: str = path_logs,
-                      path_tmp: str = path_tmp,
-                      batch_size: int = 100000) -> pd.DataFrame:
-    '''Загружает данные из PostgreSQL
+                      batch_size: int = 500000) -> pd.DataFrame:
+    '''
+    Загружает данные из PostgreSQL
 
     Args: 
-        full_load (bool): Загружать все данные или только за последний час
-        path (str): Путь до файла recent_logs.csv (по умолчанию)
+        full_load (bool): Загружать все данные или только недостающие
+        path (str): Путь до файла recent_logs.csv
         batch_size (int): Размер пакета загрузки
 
     Returns:
-        data (DataFrame): Возвращает данные полученные из базы данных если соединение успешно или None если не удалось
+        data (DataFrame): Возвращает данные полученные из базы данных
     '''
-    logger.info("Старт load_data_from_db.")
+    logger.info("load_data_from_db - Старт load_data_from_db.")
 
-    # Загружаем параметры подключения к базе данных
-    DB_PARAMS = load_connect_csv()
-    if DB_PARAMS is None:
-        logger.error("Не удалось загрузить параметры подключения")
-        return pd.DataFrame()
+    # Загрузка параметров подключения
+    DB_PARAMS = connect()
 
-    # Проверяем существует ли файл по пути path, если нет, то full_load = True
-    if not os.path.exists(path_logs):
+    # Загрузка recent_logs.csv
+    if os.path.exists(path_logs):
+        recent_logs = load_recent_logs(path_logs)
+    else:
+        logger.warning(
+            f"load_data_from_db - Файл логов {path_logs} не найден. Загрузка всех данных.")
         full_load = True
+        columns = ['timestamp', 'log_level', 'log_type', 'message']
+        recent_logs = pd.DataFrame(columns=columns)
+        save_csv_file(recent_logs, path_logs)
 
-    # Загружаем исторические данные из логов recent_logs.csv
-    recent_logs = load_recent_logs(path_logs)
-
-    # Если full_load = False, то получаем последнее время из recent_logs.csv
     interval_str = None
+
+    # Получение временного интервала
     if not full_load:
         interval_str = get_interval(recent_logs)
         if interval_str is None:
             return pd.DataFrame()
 
-    query = build_query(full_load, interval_str)
+    # Получение запроса
+    debug = False
+    query = build_query(full_load, interval_str, debug=debug)
 
-    # Подключение к базе данных
     try:
         with psycopg2.connect(**DB_PARAMS) as conn:
             with conn.cursor(name='batched_cursor') as cursor:
                 cursor.execute(query)
-                total_rows = write_cursor(
-                    cursor, path_tmp, batch_size=batch_size)
 
-        new_data = pd.read_csv(path_tmp, parse_dates=[
-                               'timestamp'], low_memory=False)
+                # Инициализация
+                first_rows = cursor.fetchmany(batch_size)
+                if not first_rows:
+                    logger.warning(
+                        f'load_data_from_db - Запрос вернул 0 строк.')
+                    return recent_logs
 
-        # Объединяем исторические данные с новыми
-        concat_data = merge_and_sort_logs(recent_logs, new_data)
-        # Рассчет кол-во добавленных данных
-        new_rows_added = len(concat_data) - len(recent_logs)
+                columns = [desc[0] for desc in cursor.description]
+                chunk_df = pd.DataFrame(first_rows, columns=columns)
+                total_rows = len(chunk_df)
+                save_csv_file(chunk_df, path_logs,
+                              append=True, log_success=False)
 
-        if new_rows_added > 0:
-            save_csv_file(
-                concat_data.iloc[-new_rows_added:], path_logs, append=True)
-            logger.info(
-                f"Добавлено {new_rows_added} строк. Всего: {len(concat_data)}")
-        else:
-            logger.info("Новых данных нет.")
+                pbar = tqdm(desc="Загрузка данных из БД", unit="строк",
+                            initial=total_rows, bar_format="{desc}: {elapsed} | {n:,} строк")
 
-        return concat_data if new_rows_added > 0 else recent_logs
+                while True:
+                    rows = cursor.fetchmany(batch_size)
+                    if not rows:
+                        break
+                    chunk_df = pd.DataFrame(rows, columns=columns)
+                    save_csv_file(chunk_df, path_logs,
+                                  append=True, log_success=False)
+                    total_rows += len(chunk_df)
+                    pbar.update(len(chunk_df))
 
-    # Если соединение не удалось
+                pbar.close()
+
+        logger.info(f'load_data_from_db - Всего загружено {total_rows} строк.')
+
+        return load_recent_logs(path_logs) if total_rows > 0 else recent_logs
+
     except Exception as e:
-        logger.error(f"Ошибка при соединении с БД: {e}")
+        logger.error(f"load_data_from_db - Ошибка при соединении с БД: {e}")
         return pd.DataFrame()
 
 
-def write_cursor(cursor, output_path: str, batch_size=100000):
-    '''
-    Сохраняет результат курсора PostgreSQL в CSV-файл пакетами (batch-ами).
-
-    Args:
-        cursor: psycopg2 курсор с выполненным запросом
-        output_path (str): Путь к временному файлу для записи
-        batch_size (int): Размер одного батча
-
-    Returns:
-        int: Общее количество записей, сохранённых в файл
-    '''
-    colunms_names = [desc[0] for desc in cursor.description]
-    total_rows = 0
-
-    with open(output_path, mode='w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
-        writer.writerow(colunms_names)
-
-        with tqdm(total=1, desc="Загрузка данных из БД", bar_format="{desc}: {elapsed}") as pbar:
-            while True:
-                rows = cursor.fetchmany(batch_size)
-                if not rows:
-                    break
-                writer.writerows(rows)
-                total_rows += 1
-                pbar.update(1)
-
-        return total_rows
-
-
 def get_interval(data: pd.DataFrame) -> Optional[str]:
-    '''Получение интервала времени для SQL 
+    '''
+    Получение интервала времени для запроса SQL 
 
     Args: 
         data (pd.DataFrame): Данные по которым считается интервал времени
 
     Returns:
-
+        interval (str): Интервал недостающих данных
     '''
     # Получаем последнее время
     last_time = get_last_time(data)
 
     # Если последнее время пустое
     if last_time is None:
-        logger.error("Не удалось получить последнее время.")
+        logger.error("get_interval - Не удалось получить последнее время.")
         return None
     try:
         time_diff = datetime.now() - last_time
         interval = f"{max(1, int(time_diff.total_seconds() / 60))} minutes"
-        logger.info(f"Интервал загрузки: {interval}")
+        logger.info(f"get_interval - Интервал загрузки: {interval}")
         return interval
     except Exception as e:
-        logger.error(f"Ошибка при расчёте интервала: {e}")
+        logger.error(f"get_interval - Ошибка при расчёте интервала: {e}")
         return None
 
 
-def build_query(full_load: bool, interval_str: str = None) -> str:
+def build_query(full_load: bool, interval_str: str = None, debug=False) -> str:
+    '''
+
+    Args: 
+        full_load (bool): Значение при котором загружать все данные или часть
+        interval_str (str): Интеврал времени по которому производить загрузку данных
+        debug (bool): Загружаем только часть данных для debug
+    Returns:
+        (str): Запрос для PostgreSQL
+    '''
+    if debug:
+        logger.info("build_query - Debug запрос")
+        return "SELECT timestamp, log_level, log_type, message FROM logs LIMIT 250000;"
     if full_load:
-        logger.info("Запрос всех данных из БД.")
+        logger.info("build_query - Запрос всех данных из БД.")
         return "SELECT timestamp, log_level, log_type, message FROM logs;"
     else:
-        logger.info(f"Запрос данных за интервал: {interval_str}")
+        logger.info(f"build_query - Запрос данных за интервал: {interval_str}")
         return f"""SELECT timestamp, log_level, log_type, message 
                    FROM logs WHERE timestamp >= NOW() - INTERVAL '{interval_str}'"""
 
 
+def connect(path_inconn: str = path_inconnect,
+            path_exconn: str = path_exconnect) -> pd.DataFrame:
+    '''
+    Загрузка параметров подключения (внутренного или внешнего)
+
+    Args: 
+        path_inconn (str): Путь до файла internal_connection.csv
+        path_exconn (str): Путь до файла external_connection.csv
+
+    Returns:
+        (pd.DataFrame): Пустой датафрейм, если подключение не удалось
+        (Dict[str, str]): Параметры подключения
+    '''
+
+    try:
+        DB_PARAMS = load_connect_csv(path_inconn)
+        logger.info('connect - Внутреннее подключение.')
+        if DB_PARAMS is None:
+            return pd.DataFrame()
+        else:
+            return DB_PARAMS
+    except:
+        DB_PARAMS = load_connect_csv(path_exconn)
+        logger.info('connect - Внешнее подключение.')
+        if DB_PARAMS is None:
+            return pd.DataFrame()
+        else:
+            return DB_PARAMS
+
+
 def merge_and_sort_logs(old_logs: pd.DataFrame, new_logs: pd.DataFrame) -> pd.DataFrame:
+    '''
+    Функция для объединения старых и новых данных с сортировкой по времени
+
+    Args: 
+        old_logs (pd.DataFrame): Датафрейм со старыми данными
+        new_logs (pd.DataFrame): Датафрейм с новыми данными
+    Returns:
+        (pd.DataFrame): Объединенный и отсортированный датафрейм
+    '''
     if new_logs is None:
         merged = old_logs.copy()
     else:

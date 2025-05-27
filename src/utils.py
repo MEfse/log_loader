@@ -164,3 +164,91 @@ def plot_predict():
     # except Exception as e:
     # logger.error(f"Ошибка при расчёте интервала: {e}")
     # return None
+
+# def create_or_delete_file(create: bool = True,
+    # path: str = path_tmp) -> None:
+    '''
+    Создание временного файла
+
+    Args: 
+        create (bool): Создавать ли новый файл 
+
+    Returns:
+
+    '''
+    # try:
+    # if create == True:
+    # Создание временного файла
+    # save_csv_file(pd.DataFrame(), path_tmp, file_desc='Временный файл')
+    # else:
+    # os.remove(path)
+    # logger.info(f'create_or_delete_file - Временный файл удален.')
+    # except Exception as e:
+    # logger.error(f'create_or_delete_file - Ошибка {e}')
+
+
+# def old_load_data_from_db(full_load: bool = False,
+    # path: str = path_logs) -> pd.DataFrame:
+    '''Загружает данные из PostgreSQL
+
+    Args: 
+        full_load (bool): Загружать все данные или только за последний час
+        path (str): Путь до файла recent_logs.csv (по умолчанию)
+
+    Returns:
+        data (DataFrame): Возвращает данные полученные из базы данных если соединение успешно или None если не удалось
+    '''
+    # logger.info("Старт load_data_from_db.")
+
+    # Загружаем параметры подключения к базе данных
+    # DB_PARAMS = load_connect_csv(path_inconnect)
+    # if DB_PARAMS is None:
+    # logger.error("Не удалось загрузить параметры подключения")
+    # return pd.DataFrame()
+
+    # Проверяем существует ли файл по пути path, если нет, то full_load = True
+    # if not os.path.exists(path):
+    # full_load = True
+
+    # Загружаем исторические данные из логов recent_logs.csv
+    # recent_logs = load_recent_logs(path)
+
+    # Если full_load = False, то получаем последнее время из recent_logs.csv
+    # interval_str = None
+    # if not full_load:
+    # interval_str = get_interval(recent_logs)
+    # if interval_str is None:
+    # return pd.DataFrame()
+
+    # Подключение к базе данных
+    # try:
+    # query = build_query(full_load, interval_str)
+    # with psycopg2.connect(**DB_PARAMS) as conn:
+    # with tqdm(total=1, desc="Загрузка данных из БД", bar_format="{desc}: {elapsed}") as pbar:
+    # data_from_db = pd.read_sql_query(query, conn)
+    # pbar.update(1)
+
+    # Если data_from_db пустой, то возвращаем пустой датафрейм
+    # if data_from_db.empty:
+    # logger.info("Нет новых данных из базы данных.")
+    # return pd.DataFrame()
+
+    # Объединяем исторические данные с новыми
+    # concat_data = merge_and_sort_logs(recent_logs, data_from_db)
+    # Рассчет кол-во добавленных данных
+    # new_rows_added = len(concat_data) - len(recent_logs)
+
+    # if new_rows_added > 0:
+    # save_csv_file(
+    # concat_data.iloc[-new_rows_added:], path_logs, append=True)
+    # logger.info(
+    # f"Добавлено {new_rows_added} строк. Всего: {len(concat_data)}")
+    # else:
+    # logger.info("Новых данных нет.")
+
+    # return concat_data if new_rows_added > 0 else recent_logs
+
+    # Если соединение не удалось
+    # except Exception as e:
+    # logger.error(f"Ошибка при соединении с БД: {e}")
+    # return pd.DataFrame()

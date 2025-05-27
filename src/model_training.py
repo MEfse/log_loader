@@ -3,7 +3,7 @@ from sklearn.model_selection import GridSearchCV
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima import auto_arima
 
-from src.config.path_config import path_model, path_predict, path_logs, path_connect
+from src.config.path_config import path_model, path_predict, path_logs
 from src.loader.connect_to_db import load_data_from_db
 from src.loader.loader_csv_file import load_csv_file
 from src.loader.loader_model import load_model, save_model

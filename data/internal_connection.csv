@@ -1,0 +1,2 @@
+dbname,user,password,host,port
+graylog,postgres,C60cdce0,10.55.6.168,5432
