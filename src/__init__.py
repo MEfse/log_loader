@@ -18,6 +18,8 @@ from src.model_training import load_or_train, train_model, update_model
 from src.feature_engineering import preprocess_arima
 from src.utils import adfuller_test, plot_predict
 
+from src.run_spark import spark_connect
+
 # Объединённый публичный API
 __all__ = [
     'path_model', 'path_predict', 'path_logs', 'path_inconnect', 'path_exconnect', 'path_logging', 'path_time_series', 'path_tmp',
@@ -27,5 +29,6 @@ __all__ = [
     'build_query', 'merge_and_sort_logs',
     'load_model', 'save_model',
     'load_or_train', 'train_model', 'update_model',
-    'preprocess_arima', 'adfuller_test', 'plot_predict'
+    'preprocess_arima', 'adfuller_test', 'plot_predict',
+    'spark_connect'
 ]

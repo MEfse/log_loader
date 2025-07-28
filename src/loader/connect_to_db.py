@@ -7,7 +7,7 @@ from warnings import filterwarnings
 from typing import Optional, Dict
 from datetime import datetime
 
-from src.config.path_config import path_logs, path_tmp, path_inconnect, path_exconnect
+from src.config.path_config import path_logs, path_inconnect, path_exconnect
 from src.loader.loader_csv_file import load_recent_logs, save_csv_file, load_connect_csv
 from src.config.logger_config import logger
 from src.feature_engineering import get_last_time
@@ -18,17 +18,17 @@ filterwarnings("ignore", category=UserWarning,
 
 def load_data_from_db(full_load: bool = False,
                       path_logs: str = path_logs,
-                      batch_size: int = 500000) -> pd.DataFrame:
+                      batch_size: int = 500000) -> None:
     '''
     Загружает данные из PostgreSQL
 
     Args: 
         full_load (bool): Загружать все данные или только недостающие
-        path (str): Путь до файла recent_logs.csv
+        path_logs (str): Путь до файла recent_logs.csv
         batch_size (int): Размер пакета загрузки
 
     Returns:
-        data (DataFrame): Возвращает данные полученные из базы данных
+        None
     '''
     logger.info("load_data_from_db - Старт load_data_from_db.")
 
@@ -38,6 +38,7 @@ def load_data_from_db(full_load: bool = False,
     # Загрузка recent_logs.csv
     if os.path.exists(path_logs):
         recent_logs = load_recent_logs(path_logs)
+    # Если загрузить нельзя, создаем файл recent_logs.csv
     else:
         logger.warning(
             f"load_data_from_db - Файл логов {path_logs} не найден. Загрузка всех данных.")
@@ -46,17 +47,14 @@ def load_data_from_db(full_load: bool = False,
         recent_logs = pd.DataFrame(columns=columns)
         save_csv_file(recent_logs, path_logs)
 
-    interval_str = None
-
     # Получение временного интервала
     if not full_load:
         interval_str = get_interval(recent_logs)
         if interval_str is None:
-            return pd.DataFrame()
+            return None
 
     # Получение запроса
-    debug = False
-    query = build_query(full_load, interval_str, debug=debug)
+    query = build_query(full_load, interval_str)
 
     try:
         with psycopg2.connect(**DB_PARAMS) as conn:
@@ -68,7 +66,7 @@ def load_data_from_db(full_load: bool = False,
                 if not first_rows:
                     logger.warning(
                         f'load_data_from_db - Запрос вернул 0 строк.')
-                    return recent_logs
+                    return None
 
                 columns = [desc[0] for desc in cursor.description]
                 chunk_df = pd.DataFrame(first_rows, columns=columns)
@@ -93,11 +91,11 @@ def load_data_from_db(full_load: bool = False,
 
         logger.info(f'load_data_from_db - Всего загружено {total_rows} строк.')
 
-        return load_recent_logs(path_logs) if total_rows > 0 else recent_logs
+        return None
 
     except Exception as e:
         logger.error(f"load_data_from_db - Ошибка при соединении с БД: {e}")
-        return pd.DataFrame()
+        return None
 
 
 def get_interval(data: pd.DataFrame) -> Optional[str]:
@@ -127,19 +125,14 @@ def get_interval(data: pd.DataFrame) -> Optional[str]:
         return None
 
 
-def build_query(full_load: bool, interval_str: str = None, debug=False) -> str:
+def build_query(full_load: bool, interval_str: str = None) -> str:
     '''
-
     Args: 
         full_load (bool): Значение при котором загружать все данные или часть
         interval_str (str): Интеврал времени по которому производить загрузку данных
-        debug (bool): Загружаем только часть данных для debug
     Returns:
         (str): Запрос для PostgreSQL
     '''
-    if debug:
-        logger.info("build_query - Debug запрос")
-        return "SELECT timestamp, log_level, log_type, message FROM logs LIMIT 250000;"
     if full_load:
         logger.info("build_query - Запрос всех данных из БД.")
         return "SELECT timestamp, log_level, log_type, message FROM logs;"
@@ -150,7 +143,7 @@ def build_query(full_load: bool, interval_str: str = None, debug=False) -> str:
 
 
 def connect(path_inconn: str = path_inconnect,
-            path_exconn: str = path_exconnect) -> pd.DataFrame:
+            path_exconn: str = path_exconnect):
     '''
     Загрузка параметров подключения (внутренного или внешнего)
 
@@ -159,22 +152,22 @@ def connect(path_inconn: str = path_inconnect,
         path_exconn (str): Путь до файла external_connection.csv
 
     Returns:
-        (pd.DataFrame): Пустой датафрейм, если подключение не удалось
         (Dict[str, str]): Параметры подключения
+        None
     '''
 
     try:
         DB_PARAMS = load_connect_csv(path_inconn)
-        logger.info('connect - Внутреннее подключение.')
+        logger.info('1/5 | connect - Внутреннее подключение.')
         if DB_PARAMS is None:
-            return pd.DataFrame()
+            return None
         else:
             return DB_PARAMS
     except:
         DB_PARAMS = load_connect_csv(path_exconn)
-        logger.info('connect - Внешнее подключение.')
+        logger.info('1/5 | connect - Внешнее подключение.')
         if DB_PARAMS is None:
-            return pd.DataFrame()
+            return None
         else:
             return DB_PARAMS
 

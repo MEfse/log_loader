@@ -1,6 +1,7 @@
 from pathlib import Path
 
-BASE_DIR = Path.home() / "Desktop/project"
+# BASE_DIR = Path.home() / "Desktop/project" # Windows
+BASE_DIR = Path("/home/user/project") # Ubuntu
 
 path_model = BASE_DIR / "models/model.hd5"
 path_predict = BASE_DIR / "data/ARIMA/predict_arima.csv"
