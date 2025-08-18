@@ -2,16 +2,13 @@
 __pycache__/
 
 # Virtual enviroments
-venv/
-env/
+venv_linux/
+venv_windows/
+.env
 
 # Logs
 logging.log
 recent_logs.csv
-
-# Connection data 
-data/Others_Model/external_connection.csv
-data/Others_Model/internal_connection.csv
 
 # Temporary / dev files
 start.py

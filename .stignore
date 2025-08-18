@@ -1,5 +1,6 @@
 # Игнорировать виртуальное окружение
 venv/
+airflow_venv/
 
 # Кэш и временные файлы
 __pycache__/
@@ -9,7 +10,6 @@ __pycache__/
 *.sqlite
 *.db
 
-# Служебные файлы IDE и системы
-.DS_Store
-.env
-.vscode/
+# Игноры
+gitgnore
+stignore

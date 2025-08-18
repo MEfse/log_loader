@@ -1,9 +1,9 @@
 from statsmodels.tsa.stattools import adfuller
 from matplotlib import pyplot as plt
 
-from src.config.path_config import path_model, path_time_series
-from src.loader.loader_csv_file import load_csv_file
-from src.config.logger_config import logger
+from src.path_config import path_model, path_time_series
+from src.extract import load_csv_file, load_model
+from src.logger_config import logger
 
 
 def adfuller_test(data):
@@ -37,8 +37,6 @@ def plot_predict():
     Returns:
 
     '''
-
-    from src.loader.loader_csv_file import load_model
 
     time_series = load_csv_file(path_time_series)
 
