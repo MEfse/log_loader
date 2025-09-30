@@ -1,19 +1,26 @@
 # Byte-compiled
 __pycache__/
 
-# Virtual enviroments
+# Virtual environments
 venv_linux/
 venv_windows/
+
+# Environment variables
 .env
 
-# Logs
+# Logs and data files
 logging.log
 recent_logs.csv
 predict_arima.csv
-arima_dag.py
-rm_file.txt
-Dockerfile
 
-# Temporary / dev files
+# Temporary or dev files
 start.py
 test.py
+
+# Config files
+# Keep Dockerfile and any other setup config, but not temp files
+Dockerfile
+
+# Other optional additions
+*.bak
+*.swp
