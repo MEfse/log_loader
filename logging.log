@@ -2282,3 +2282,671 @@ py4j.protocol.Py4JNetworkError: Error while sending or receiving
 2025-05-28 10:38:01,695 - INFO - Closing down clientserver connection
 2025-05-28 10:38:01,696 - INFO - Closing down clientserver connection
 2025-05-28 10:38:01,723 - INFO - Closing down clientserver connection
+2025-08-18 15:10:53,240 - INFO - generated new fontManager
+2025-08-19 11:06:29,543 - WARNING - load_data_from_db - Файл логов /data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 11:08:30,512 - WARNING - load_data_from_db - Файл логов /data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 11:10:02,231 - WARNING - load_data_from_db - Файл логов /data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 11:10:02,235 - ERROR - save_csv_file - Ошибка при сохранении файл /data/recent_logs.csv: Cannot save file into a non-existent directory: '\data'
+2025-08-19 11:10:21,517 - WARNING - load_data_from_db - Файл логов data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 11:10:21,519 - INFO - save_csv_file - файл добавлен в data/recent_logs.csv.
+2025-08-19 11:11:52,535 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 11:12:01,644 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 11:15:58,109 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 11:15:58,109 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 11:21:16,756 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 11:21:16,756 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 11:34:49,382 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 11:34:49,383 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:03:23,614 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:03:23,614 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:03:33,067 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:03:33,068 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:26:34,672 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:26:34,673 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:28:47,852 - WARNING - load_data_from_db - Файл логов data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 13:29:02,903 - WARNING - load_data_from_db - Файл логов data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 13:29:52,052 - WARNING - load_data_from_db - Файл логов data/recent_logs.csv не найден. Загрузка всех данных.
+2025-08-19 13:29:52,055 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-19 13:29:52,055 - INFO - build_query - Запрос всех данных из БД.
+2025-08-19 13:29:52,055 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:31:37,020 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 13:31:37,021 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:31:37,021 - ERROR - load_data_from_db - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:34:56,697 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 13:34:56,697 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:34:56,698 - ERROR - get_data - Ошибка при соединении с БД: 'LogDataLoader' object has no attribute 'DB_PARAMS'
+2025-08-19 13:36:21,613 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 13:36:21,614 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:36:21,705 - ERROR - get_data - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-08-19 13:45:05,509 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 13:45:05,509 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 13:45:05,610 - ERROR - get_data - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-08-19 15:00:40,401 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:04:17,472 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:04:17,473 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 15:05:00,351 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:05:00,351 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 15:06:14,422 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:06:14,422 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 15:08:54,271 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:08:54,271 - INFO - build_query - Запрос данных за интервал: None
+2025-08-19 15:08:54,339 - ERROR - get_data - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-08-19 15:32:00,252 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-19 15:32:00,254 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:32:00,268 - INFO - build_query - Запрос всех данных из БД.
+2025-08-19 15:32:07,272 - ERROR - get_data - Ошибка при соединении с БД: LoaderCsvFile.save_csv_file() missing 1 required positional argument: 'path'
+2025-08-19 15:33:57,837 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-19 15:33:57,839 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:33:57,841 - INFO - build_query - Запрос всех данных из БД.
+2025-08-19 15:34:03,541 - ERROR - get_data - Ошибка при соединении с БД: LoaderCsvFile.save_csv_file() missing 1 required positional argument: 'path'
+2025-08-19 15:35:15,360 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-19 15:35:15,362 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:35:15,364 - INFO - build_query - Запрос всех данных из БД.
+2025-08-19 15:35:20,971 - ERROR - get_data - Ошибка при соединении с БД: LoaderCsvFile.save_csv_file() missing 1 required positional argument: 'self'
+2025-08-19 15:36:22,925 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-19 15:36:22,928 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 15:36:22,929 - INFO - build_query - Запрос всех данных из БД.
+2025-08-19 15:53:52,489 - INFO - get_data - Всего загружено 63057362 строк.
+2025-08-19 15:59:40,394 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-19 16:01:07,511 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-19 16:02:43,496 - INFO - build_query - Запрос всех данных из БД.
+2025-08-20 08:41:18,237 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-20 08:42:39,601 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-20 08:42:39,608 - INFO - build_query - Запрос всех данных из БД.
+2025-08-20 08:51:08,009 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-20 08:53:36,192 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-20 08:53:36,200 - INFO - build_query - Запрос данных за интервал: None
+2025-08-20 08:53:36,282 - ERROR - get_data - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-08-20 08:54:15,055 - WARNING - load_data_from_db - Файл логов data/recent_logs.csv не найден. Создаём новый файл и загружаем все данные.
+2025-08-20 08:54:15,058 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 08:54:15,058 - INFO - build_query - Запрос всех данных из БД.
+2025-08-20 08:55:08,323 - INFO - Файл логов найден по пути data/recent_logs.csv
+2025-08-20 08:55:10,555 - INFO - load_csv_file - Файл логов data/recent_logs.csv загружен.
+2025-08-20 08:55:10,558 - INFO - build_query - Запрос данных за интервал: None
+2025-08-20 08:55:10,606 - ERROR - get_data - Ошибка при соединении с БД: invalid input syntax for type interval: "None"
+LINE 2: ...        FROM logs WHERE timestamp >= NOW() - INTERVAL 'None'
+                                                                 ^
+
+2025-08-20 10:05:44,976 - ERROR - get_data - Ошибка при соединении с БД: psycopg2.connect() argument after ** must be a mapping, not NoneType
+2025-08-20 11:39:44,119 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,123 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,127 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,131 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,135 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,140 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,145 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,150 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,155 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 11:39:44,160 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,434 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,441 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,448 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,454 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,462 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,470 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,475 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,483 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,490 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,498 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,504 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,511 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,518 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,525 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,533 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,539 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,546 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,553 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,559 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,567 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-08-20 12:36:40,573 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,185 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,191 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,196 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,201 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,207 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,211 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,216 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,220 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,227 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,231 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,237 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,242 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,247 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,251 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,255 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,259 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,264 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,269 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,274 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,279 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,284 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,287 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,295 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,300 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:39:26,304 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,950 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,958 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,964 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,970 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,976 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,981 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,987 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,992 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:33,999 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,004 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,009 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,015 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,022 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,029 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,033 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,040 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,045 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,050 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,056 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,061 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,066 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,072 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,077 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,082 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-25 09:44:34,088 - INFO - save_csv_file - Файл добавлен в data/recent_logs.csv.
+2025-09-26 10:49:47,758 - ERROR - load_csv_file - Ошибка при загрузке data/recent_logs.csv: Missing column provided to 'parse_dates': 'timestamp'
+2025-09-26 10:49:47,765 - ERROR - Колонка 'hour' отсутствует в данных.
+2025-09-26 10:55:20,029 - INFO - load_csv_file - data/recent_logs.csv загружен.
+2025-09-26 10:55:20,040 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:16:07,302 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:16:07,307 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:16:21,690 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:16:21,700 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:16:21,700 - INFO - Интервал загрузки: 136 minutes
+2025-09-26 11:17:18,158 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:17:18,161 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:17:18,161 - INFO - Интервал загрузки: 137 minutes
+2025-09-26 11:27:43,549 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:28:18,028 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:28:40,036 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:28:51,292 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:29:39,155 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:29:39,155 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:29:39,155 - INFO - Интервал загрузки: 149 minutes
+2025-09-26 11:45:37,054 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 11:45:37,054 - INFO - Получаем последнее время: 2025-09-26 09:00:00
+2025-09-26 11:45:37,054 - INFO - Интервал загрузки: 165 minutes
+2025-09-26 17:41:33,370 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 17:41:33,373 - INFO - Получаем последнее время: 2025-09-26 11:00:00
+2025-09-26 17:41:33,374 - INFO - Интервал загрузки: 401 minutes
+2025-09-26 17:41:54,435 - ERROR - get_data - Ошибка при соединении с БД: connection to server at "10.55.6.168", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-09-26 17:47:23,385 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 17:47:23,386 - INFO - Получаем последнее время: 2025-09-26 11:00:00
+2025-09-26 17:47:23,386 - INFO - Интервал загрузки: 407 minutes
+2025-09-26 17:47:44,433 - ERROR - get_data - Ошибка при соединении с БД: connection to server at "10.55.6.168", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-09-26 17:50:20,022 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-26 17:50:20,023 - INFO - Получаем последнее время: 2025-09-26 11:00:00
+2025-09-26 17:50:20,024 - INFO - Интервал загрузки: 410 minutes
+2025-09-26 17:50:41,066 - ERROR - get_data - Ошибка при соединении с БД: connection to server at "10.55.6.168", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-09-29 08:33:45,498 - INFO - Параметры подключения загружены.
+2025-09-29 08:35:01,251 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 08:35:01,251 - INFO - Получаем последнее время: 2025-09-26 11:00:00
+2025-09-29 08:35:01,251 - INFO - Интервал загрузки: 4175 minutes
+2025-09-29 12:54:37,553 - WARNING - Файл data/recent_logs.csv не найден.
+2025-09-29 12:54:37,558 - ERROR - get_last_time: данных нет.
+2025-09-29 12:54:37,558 - ERROR - Ошибка при расчёте интервала: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2025-09-29 13:26:24,346 - WARNING - Файл data/recent_logs.csv не найден.
+2025-09-29 13:26:24,349 - ERROR - get_last_time: данных нет.
+2025-09-29 13:26:24,349 - ERROR - Ошибка при расчёте интервала: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2025-09-29 13:28:47,531 - WARNING - Файл data/recent_logs.csv не найден.
+2025-09-29 13:28:47,531 - ERROR - get_last_time: данных нет.
+2025-09-29 13:28:47,531 - ERROR - Ошибка при расчёте интервала: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2025-09-29 13:32:45,465 - INFO - Данные подключения загружены.
+2025-09-29 13:32:45,564 - INFO - Данные подключения загружены.
+2025-09-29 13:32:45,567 - INFO - Данные подключения загружены.
+2025-09-29 13:32:45,567 - INFO - Данные подключения загружены.
+2025-09-29 13:32:45,568 - INFO - Данные подключения загружены.
+2025-09-29 13:32:45,629 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 13:32:45,633 - INFO - Получаем последнее время: 2025-03-11 15:00:00
+2025-09-29 13:32:45,633 - INFO - Интервал загрузки: 290792 minutes
+2025-09-29 13:34:26,429 - INFO - Данные подключения загружены.
+2025-09-29 13:34:26,535 - INFO - Данные подключения загружены.
+2025-09-29 13:34:26,537 - INFO - Данные подключения загружены.
+2025-09-29 13:34:26,538 - INFO - Данные подключения загружены.
+2025-09-29 13:34:26,538 - INFO - Данные подключения загружены.
+2025-09-29 13:46:26,426 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 13:46:26,426 - INFO - Получаем последнее время: 2025-09-29 13:00:00
+2025-09-29 13:46:26,426 - INFO - Интервал загрузки: 46 minutes
+2025-09-29 14:14:30,179 - INFO - Подключение по локальной сети.
+2025-09-29 14:14:30,224 - INFO - Загружаем все данные из БД.
+2025-09-29 14:31:34,436 - INFO - Подключение по локальной сети.
+2025-09-29 14:31:34,472 - INFO - Загружаем все данные из БД.
+2025-09-29 14:32:53,589 - INFO - Количество загруженных логов 1000
+2025-09-29 14:32:53,603 - INFO - Количество загруженных логов 2000
+2025-09-29 14:32:53,613 - INFO - Количество загруженных логов 3000
+2025-09-29 14:32:53,624 - INFO - Количество загруженных логов 4000
+2025-09-29 14:32:53,634 - INFO - Количество загруженных логов 5000
+2025-09-29 14:32:53,640 - INFO - Количество загруженных логов 6000
+2025-09-29 14:46:55,521 - INFO - Подключение по локальной сети.
+2025-09-29 14:46:55,566 - INFO - Загружаем все данные из БД.
+2025-09-29 14:50:23,727 - INFO - Подключение по локальной сети.
+2025-09-29 14:50:23,772 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 14:50:23,772 - INFO - Получаем последнее время: 2025-04-13 23:00:00
+2025-09-29 14:50:23,772 - INFO - Интервал загрузки: 242870 minutes
+2025-09-29 14:52:46,520 - INFO - Подключение по локальной сети.
+2025-09-29 14:52:46,552 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 14:52:46,552 - INFO - Получаем последнее время: 2025-05-25 14:00:00
+2025-09-29 14:52:46,552 - INFO - Интервал загрузки: 182932 minutes
+2025-09-29 14:54:40,638 - INFO - Подключение по локальной сети.
+2025-09-29 14:54:40,680 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 14:54:40,682 - INFO - Получаем последнее время: 2025-07-06 05:00:00
+2025-09-29 14:54:40,682 - INFO - Интервал загрузки: 122994 minutes
+2025-09-29 14:56:00,951 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 14:59:42,037 - INFO - Подключение по локальной сети.
+2025-09-29 14:59:42,089 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 14:59:42,092 - INFO - Получаем последнее время: 2025-08-16 20:00:00
+2025-09-29 14:59:42,092 - INFO - Интервал загрузки: 63059 minutes
+2025-09-29 15:01:26,269 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:01:26,270 - WARNING - Файл модели не найден.
+2025-09-29 15:01:26,270 - INFO - Файл модели не найден, обучаем с нуля.
+2025-09-29 15:01:26,272 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:42:24,713 - INFO - Подключение по локальной сети.
+2025-09-29 15:42:24,766 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:42:24,766 - INFO - Получаем последнее время: 2025-09-27 11:00:00
+2025-09-29 15:42:24,766 - INFO - Интервал загрузки: 3162 minutes
+2025-09-29 15:44:57,268 - INFO - Подключение по локальной сети.
+2025-09-29 15:44:57,324 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:44:57,325 - INFO - Получаем последнее время: 2025-09-29 15:00:00
+2025-09-29 15:44:57,325 - INFO - Интервал загрузки: 44 minutes
+2025-09-29 15:46:56,180 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:50:18,084 - INFO - Подключение по локальной сети.
+2025-09-29 15:50:18,126 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:50:18,126 - INFO - Получаем последнее время: 2025-09-29 15:00:00
+2025-09-29 15:50:18,126 - INFO - Интервал загрузки: 50 minutes
+2025-09-29 15:52:18,054 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:54:31,191 - INFO - Подключение по локальной сети.
+2025-09-29 15:54:31,233 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:54:31,233 - INFO - Получаем последнее время: 2025-09-29 15:00:00
+2025-09-29 15:54:31,241 - INFO - Интервал загрузки: 54 minutes
+2025-09-29 15:55:50,599 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 15:55:50,609 - WARNING - Файл модели не найден.
+2025-09-29 15:55:50,610 - INFO - Файл модели не найден, обучаем с нуля.
+2025-09-29 16:08:21,546 - INFO - Подключение по локальной сети.
+2025-09-29 16:08:21,586 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 16:08:21,587 - INFO - Получаем последнее время: 2025-09-29 15:00:00
+2025-09-29 16:08:21,587 - INFO - Интервал загрузки: 68 minutes
+2025-09-29 16:09:37,906 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 16:09:37,906 - WARNING - Файл модели не найден.
+2025-09-29 16:09:37,906 - INFO - Файл модели не найден, обучаем с нуля.
+2025-09-29 16:13:14,910 - INFO - Подключение по локальной сети.
+2025-09-29 16:13:14,950 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 16:13:14,950 - INFO - Получаем последнее время: 2025-09-29 16:00:00
+2025-09-29 16:13:14,950 - INFO - Интервал загрузки: 13 minutes
+2025-09-29 16:14:37,933 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 16:14:37,933 - WARNING - Файл модели не найден.
+2025-09-29 16:14:37,933 - INFO - Файл модели не найден, обучаем с нуля.
+2025-09-29 16:14:54,286 - INFO - Файл модели сохранен.
+2025-09-29 19:04:53,761 - INFO - Подключение по внешней сети.
+2025-09-29 19:04:53,870 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:04:53,898 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 19:04:56,338 - INFO - Файл модели сохранен.
+2025-09-29 19:04:56,338 - INFO - Модель дообучена и сохранена.
+2025-09-29 19:26:52,370 - INFO - Подключение по внешней сети.
+2025-09-29 19:26:52,445 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:26:52,445 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:27:52,318 - INFO - Подключение по внешней сети.
+2025-09-29 19:27:52,392 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:27:52,392 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:28:40,636 - INFO - Подключение по внешней сети.
+2025-09-29 19:28:40,703 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:28:40,704 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:29:02,817 - INFO - Подключение по внешней сети.
+2025-09-29 19:29:02,899 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:29:02,905 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:29:35,586 - INFO - Подключение по внешней сети.
+2025-09-29 19:29:35,651 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:29:35,654 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:31:47,907 - INFO - Подключение по внешней сети.
+2025-09-29 19:31:47,977 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 19:31:47,978 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 20:11:04,140 - INFO - Подключение по внешней сети.
+2025-09-29 20:11:04,242 - ERROR - Ошибка при соединении с БД: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 20:11:04,242 - ERROR - Шаг get_data_db провалился: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    has_data = self.get_data_db(self.DB_PARAMS)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 54, in get_data_db
+    for data_chunk in self.loader_data.get_data(DB_PARAMS):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 118, in get_data
+    with psycopg2.connect(**DB_PARAMS) as conn:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", SSL encryption
+connection to server at "89.175.174.212", port 5432 failed: FATAL:  no pg_hba.conf entry for host "109.252.215.181", user "postgres", database "graylog", no encryption
+
+2025-09-29 20:13:43,297 - INFO - Подключение по внешней сети.
+2025-09-29 20:13:43,410 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-29 20:13:43,415 - INFO - Получаем последнее время: 2025-09-29 16:00:00
+2025-09-29 20:13:43,419 - INFO - Интервал загрузки: 253 minutes
+2025-09-29 20:15:23,831 - INFO - Пропускаем обучение: новых данных нет.
+2025-09-30 08:17:31,320 - INFO - Подключение по локальной сети.
+2025-09-30 08:17:31,370 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 08:17:31,374 - INFO - Получаем последнее время: 2025-09-29 20:00:00
+2025-09-30 08:17:31,374 - INFO - Интервал загрузки: 737 minutes
+2025-09-30 08:18:50,269 - INFO - Пропускаем обучение: новых данных нет.
+2025-09-30 08:26:40,150 - INFO - Подключение по локальной сети.
+2025-09-30 08:26:40,196 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 08:26:40,197 - INFO - Получаем последнее время: 2025-09-30 08:00:00
+2025-09-30 08:26:40,197 - INFO - Интервал загрузки: 26 minutes
+2025-09-30 08:27:57,017 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 41, in execute
+    if has_data:
+       ^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:30:33,400 - INFO - Подключение по локальной сети.
+2025-09-30 10:30:33,459 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:30:33,460 - INFO - Получаем последнее время: 2025-09-30 08:00:00
+2025-09-30 10:30:33,460 - INFO - Интервал загрузки: 150 minutes
+2025-09-30 10:31:55,893 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 41, in execute
+    if has_data:
+       ^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:33:16,482 - INFO - Подключение по локальной сети.
+2025-09-30 10:33:16,541 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:33:16,541 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 10:33:16,541 - INFO - Интервал загрузки: 33 minutes
+2025-09-30 10:34:34,436 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 41, in execute
+    if has_data:
+       ^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:34:47,223 - INFO - Подключение по локальной сети.
+2025-09-30 10:34:47,285 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:34:47,286 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 10:34:47,286 - INFO - Интервал загрузки: 34 minutes
+2025-09-30 10:36:06,519 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 41, in execute
+    if self.has_data:
+       ^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:36:41,669 - INFO - Подключение по локальной сети.
+2025-09-30 10:36:41,718 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:36:41,718 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 10:36:41,718 - INFO - Интервал загрузки: 36 minutes
+2025-09-30 10:38:01,818 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 42, in execute
+    if self.has_data:
+       ^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:39:24,047 - INFO - Подключение по локальной сети.
+2025-09-30 10:39:24,105 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:39:24,106 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 10:39:24,106 - INFO - Интервал загрузки: 39 minutes
+2025-09-30 10:40:42,427 - ERROR - Шаг load_model провалился: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 42, in execute
+    if self.has_data:
+       ^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\generic.py", line 1577, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-09-30 10:44:14,074 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,077 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,078 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,078 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,078 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,081 - INFO - Параметры подключения загружены.
+2025-09-30 10:44:14,122 - INFO - Подключение по локальной сети.
+2025-09-30 10:44:14,165 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 10:44:14,166 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 10:44:14,166 - INFO - Интервал загрузки: 44 minutes
+2025-09-30 10:45:35,319 - ERROR - Шаг get_data_db провалился: Addition/subtraction of integers and integer-arrays with DatetimeArray is no longer supported.  Instead of adding/subtracting `n`, use `n * obj.freq`
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 34, in execute
+    self.has_data = self.get_data_db(self.DB_PARAMS)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 58, in get_data_db
+    count += data_chunk
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\arraylike.py", line 190, in __radd__
+    return self._arith_method(other, roperator.radd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\frame.py", line 7913, in _arith_method
+    new_data = self._dispatch_frame_op(other, op, axis=axis)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\frame.py", line 7945, in _dispatch_frame_op
+    bm = self._mgr.apply(array_op, right=right)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\internals\managers.py", line 361, in apply
+    applied = b.apply(f, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\internals\blocks.py", line 393, in apply
+    result = func(self.values, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\ops\array_ops.py", line 273, in arithmetic_op
+    res_values = op(left, right)
+                 ^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\roperator.py", line 11, in radd
+    return right + left
+           ~~~~~~^~~~~~
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1420, in __radd__
+    return self.__add__(other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\ops\common.py", line 76, in new_method
+    return method(self, other)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\46120\OneDrive\Desktop\project\log_loader\venv_windows\Lib\site-packages\pandas\core\arrays\datetimelike.py", line 1383, in __add__
+    raise integer_op_not_supported(self)
+TypeError: Addition/subtraction of integers and integer-arrays with DatetimeArray is no longer supported.  Instead of adding/subtracting `n`, use `n * obj.freq`
+2025-09-30 11:03:48,089 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,089 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,093 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,094 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,094 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,094 - INFO - Параметры подключения загружены.
+2025-09-30 11:03:48,141 - INFO - Подключение по локальной сети.
+2025-09-30 11:03:48,186 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 11:03:48,186 - INFO - Получаем последнее время: 2025-09-30 10:00:00
+2025-09-30 11:03:48,186 - INFO - Интервал загрузки: 63 minutes
+2025-09-30 11:05:05,685 - INFO - Получено 2 данных.
+2025-09-30 11:05:05,696 - ERROR - Шаг load_model провалился: Run.load_model() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 41, in execute
+    self.load_model(self.data)
+TypeError: Run.load_model() takes 1 positional argument but 2 were given
+2025-09-30 11:11:55,979 - INFO - Подключение по локальной сети.
+2025-09-30 11:11:56,035 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 11:11:56,035 - INFO - Получаем последнее время: 2025-09-30 11:00:00
+2025-09-30 11:11:56,035 - INFO - Интервал загрузки: 11 minutes
+2025-09-30 11:13:13,602 - INFO - Получено 1 данных.
+2025-09-30 11:13:13,825 - INFO - Файл модели сохранен.
+2025-09-30 11:13:13,825 - INFO - Модель дообучена и сохранена.
+2025-09-30 11:32:43,264 - INFO - Подключение по локальной сети.
+2025-09-30 11:32:43,313 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 11:32:43,314 - INFO - Получаем последнее время: 2025-09-30 11:00:00
+2025-09-30 11:32:43,314 - INFO - Интервал загрузки: 32 minutes
+2025-09-30 11:34:01,443 - INFO - Получено 1 данных.
+2025-09-30 11:34:01,525 - INFO - Файл модели сохранен.
+2025-09-30 11:34:01,525 - INFO - Модель дообучена и сохранена.
+2025-09-30 11:34:01,526 - ERROR - Шаг predict_arima провалился: Run.predict_arima() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "c:\Users\46120\OneDrive\Desktop\project\log_loader\src\extract.py", line 50, in execute
+    self.predict_arima(self.data)
+TypeError: Run.predict_arima() takes 1 positional argument but 2 were given
+2025-09-30 11:34:43,880 - INFO - Подключение по локальной сети.
+2025-09-30 11:34:43,948 - INFO - Файл data/recent_logs.csv загружен.
+2025-09-30 11:34:43,948 - INFO - Получаем последнее время: 2025-09-30 11:00:00
+2025-09-30 11:34:43,949 - INFO - Интервал загрузки: 34 minutes
+2025-09-30 11:36:09,604 - INFO - Получено 1 данных.
+2025-09-30 11:36:09,664 - INFO - Файл модели сохранен.
+2025-09-30 11:36:09,670 - INFO - Модель дообучена и сохранена.
+2025-09-30 11:36:09,704 - INFO - Прогноз сохранен в data/predict_arima.csv. Значение 3708.0000000000005
+2025-09-30 11:40:47,771 - INFO - Подключение по локальной сети.
+2025-09-30 11:40:47,811 - INFO - Загружаем все данные из БД.
+2025-09-30 11:42:06,748 - INFO - Получено 1000 данных.
+2025-09-30 11:42:06,786 - INFO - Получено 2000 данных.
+2025-09-30 11:42:06,799 - INFO - Получено 3000 данных.
+2025-09-30 11:42:06,808 - INFO - Получено 4000 данных.
+2025-09-30 11:42:06,819 - INFO - Получено 5000 данных.
+2025-09-30 11:42:06,825 - INFO - Получено 5068 данных.
+2025-09-30 11:42:07,959 - INFO - Файл модели сохранен.
+2025-09-30 11:42:07,959 - INFO - Модель дообучена и сохранена.
+2025-09-30 11:42:08,013 - INFO - Прогноз сохранен в data/predict_arima.csv. Значение 11271.456015642885
+2025-09-30 11:47:30,038 - INFO - Подключение по локальной сети.
+2025-09-30 11:47:30,076 - INFO - Загружаем все данные из БД.
+2025-09-30 11:48:52,306 - INFO - Получено 1000 данных.
+2025-09-30 11:48:52,319 - INFO - Получено 2000 данных.
+2025-09-30 11:48:52,329 - INFO - Получено 3000 данных.
+2025-09-30 11:48:52,337 - INFO - Получено 4000 данных.
+2025-09-30 11:48:52,353 - INFO - Получено 5000 данных.
+2025-09-30 11:48:52,360 - INFO - Получено 5068 данных.
+2025-09-30 11:48:53,627 - INFO - Файл модели сохранен.
+2025-09-30 11:48:53,627 - INFO - Модель дообучена и сохранена.
+2025-09-30 11:48:53,682 - INFO - Прогноз сохранен в data/predict_arima.csv. Значение 11691.252810509759

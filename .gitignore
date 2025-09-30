@@ -9,11 +9,11 @@ venv_windows/
 # Logs
 logging.log
 recent_logs.csv
+predict_arima.csv
+arima_dag.py
+rm_file.txt
+Dockerfile
 
 # Temporary / dev files
 start.py
 test.py
-
-
-
-

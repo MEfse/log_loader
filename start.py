@@ -1,11 +1,15 @@
-import os
-from dotenv import load_dotenv
+from src.extract import LogDataLoader, LoaderCsvFile, LoadParams, Run, GetInterval
 
-# Загружаем .env
-load_dotenv()
+loader = Run()
+loader.execute()
 
-# Получаем переменные
-db_user = os.getenv("LOG_LOADER_DB_USER")
-db_password = os.getenv("LOG_LOADER_DB_PASSWORD")
+#loader = LoaderCsvFile()
+#path = LoadParams()
+#data = loader.load_recent_logs(path.PATH_LOGS)
+#query = GetQuery()
+#last_time = query.get_interval(data)
 
-print(f"User: {db_user}, Password: {db_password}")
+#print(last_time)
+
+#loader = LoadParams()
+#print(loader.get_db_params())

@@ -1,85 +1,37 @@
 import os
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.corpus import stopwords
-from typing import Optional
 
-from src.config.path_config import path_time_series
-from src.loader.loader_csv_file import save_csv_file
-from src.config.logger_config import logger
+from src.logger_config import logger
 
+class Preprocessing():
+    def __init__(self):
+        from src.extract import LoadParams
+        self.params: LoadParams = LoadParams()
 
-def preprocess_arima(data: pd.DataFrame, path: str = path_time_series):
-    '''Преобразует данные в временной ряд для ARIMA
+    def preprocess_arima(self, data: pd.DataFrame):
+        '''Преобразует данные в временной ряд для ARIMA
 
-    Args: 
-        data (DataFrame): Данные полученные с базы данных 
+        Args: 
+            data (DataFrame): Данные полученные с базы данных 
 
-    Returns:
-        time_series (DataFrame): Возвращает временной ряд
-    '''
-    logger.info("Старт preprocess_arima.")
+        Returns:
+            time_series (DataFrame): Возвращает временной ряд
+        '''
 
-    # Проверка на пустые данные или если timestamp нет в данных
-    if data.empty or 'timestamp' not in data.columns:
-        logger.warning(
-            "preprocess_arima - Пустой датафрейм или отсутствует колонка 'timestamp'.")
-        return pd.DataFrame()
+        # Проверка на пустые данные или если timestamp нет в данных
+        if data.empty or 'hour' not in data.columns:
+            logger.warning(
+                "Пустой датафрейм или отсутствует колонка 'hour'.")
+            return None
 
-    # Делаем индекс timestamp
-    data.set_index('timestamp', inplace=True)
-    # Делаем ресемлинг
-    time_series = data.resample('1H')['log_level'].size()
-    logger.info("preprocess_arima - Ресемплинг логов.")
+        # Делаем индекс timestamp
+        data.set_index('hour', inplace=True)
 
-    # Удаляем последний час
-    time_series = time_series[:-1]
+        # Проверка и преобразование в DataFrame, если это Series
+        if isinstance(data, pd.Series):
+            data = data.to_frame()
+            logger.info("Преобразовали Series в DataFrame.")
 
-    # Проверка и преобразование в DataFrame, если это Series
-    if isinstance(time_series, pd.Series):
-        time_series = time_series.to_frame()
-        logger.info("preprocess_arima - Преобразовали Series в DataFrame.")
-
-    # Проверка пути для сохранения
-    if not os.path.exists(os.path.dirname(path)):
-        logger.error(
-            f"preprocess_arima - Путь {os.path.dirname(path)} не существует.")
-        return pd.DataFrame()
-
-    # Сохраняем временной ряд
-    save_csv_file(time_series, path, file_desc='Временной ряд')
-    return time_series
+        return data
 
 
-def get_last_time(data: pd.DataFrame) -> Optional[str]:
-    '''Загружает последннюю дату из файла recent_logs
-
-    Args: 
-        path_logs (str): Передаем путь для подключения к файлу recent_logs
-    Returns:
-        last_time (datetime): Возвращаем последнее время
-    '''
-    if 'timestamp' not in data.columns:
-        logger.error(
-            "get_last_time - Колонка 'timestamp' отсутствует в данных.")
-        return None
-
-    # Убираем строки, где в timestamp стоит текст 'timestamp' (защита от ошибок)
-    data = data[data['timestamp'] != 'timestamp']
-
-    if data.empty:
-        logger.error(f'get_last_time - Данных нет.')
-        return None
-
-    last_time = data['timestamp'].max()
-
-    if pd.isna(last_time):
-        logger.error(f'get_last_time - Не удалось извлечь дату.')
-        return None
-
-    last_time = pd.to_datetime(last_time, format='%Y-%m-%d %H:%M:%S')
-
-    logger.info(f"get_last_time - Получаем последнее время: {last_time}")
-    return last_time
