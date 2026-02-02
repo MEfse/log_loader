@@ -8,7 +8,7 @@ from typing import Optional
 
 
 #from src.extract import LoadParams
-from src.logger_config import logger
+from logger_config import logger
 
 #params = LoadParams()
 #path_model = params.PATH_MODEL_ARIMA

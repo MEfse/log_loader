@@ -3,13 +3,13 @@ from sklearn.model_selection import GridSearchCV
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima import auto_arima
 
-from src.utils import adfuller_test
-from src.logger_config import logger
+from utils import adfuller_test
+from logger_config import logger
 
 class TrainModel():
     def __init__(self):
-        from src.extract import LoadParams, LoaderCsvFile, LoaderModel
-        from src.transform import Preprocessing
+        from extract import LoadParams, LoaderCsvFile, LoaderModel
+        from transform import Preprocessing
         self.params: LoadParams = LoadParams()
         self.loader: LoaderCsvFile = LoaderCsvFile()
         self.get_model: LoaderModel = LoaderModel()

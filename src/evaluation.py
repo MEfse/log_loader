@@ -1,23 +1,23 @@
 # Библиотеки для анализа данных
 import pandas as pd
+import numpy as np
 import os
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 from datetime import datetime
 
-from src.logger_config import logger
+from logger_config import logger
 
-class Metrics():
+class Evaluator():
     def __init__(self):
-        from src.extract import LoadParams, LoaderModel, LoaderCsvFile
+        from extract import LoadParams, LoaderModel, LoaderCsvFile
         self.params: LoadParams = LoadParams()
-        self.loader: LoaderCsvFile = LoaderCsvFile()
+        self.loader_csv: LoaderCsvFile = LoaderCsvFile()
         self.get_model: LoaderModel = LoaderModel()
 
     def predict(self):
         '''Прогноз на 1 час вперед
 
         Args: 
-            path_model (str): Путь до обученной модели
 
         Returns:
             forecast (float): Прогнозируемое значение
@@ -43,8 +43,7 @@ class Metrics():
             else:
                 predict_df.to_csv(self.params.PATH_PREDICT_ARIMA, mode='a',
                                 date_format='%Y-%m-%d %H:%M:%S', header=False, index=False)
-            logger.info(
-                f"Прогноз сохранен в {self.params.PATH_PREDICT_ARIMA}. Значение {predict_value}")
+            logger.info(f"Прогноз сохранен в {self.params.PATH_PREDICT_ARIMA}. Значение {predict_value}")
 
             return predict_value
 
@@ -52,28 +51,57 @@ class Metrics():
             logger.error(f"Модель не загружена, прогноз невозможен. Ошибка {e}.")
             raise
 
-
-    def evaluate(self):
-        '''Оценивает точность предсказания
+    def create_evaluate(self):
+        '''Готовит датафрейм для оценки: hour, log_count(факт), prediction
 
         Args: 
 
         Returns:
-            mae (float): Возвращает mae
+            forecast (float): Прогнозируемое значение
+        '''
+        real = self.loader_csv.load_recent_logs(self.params.PATH_LOGS)
+        predict = self.loader_csv.load_predict(self.params.PATH_PREDICT_ARIMA)
+
+        data = pd.merge(real, predict, on='hour', how='inner')
+
+        if data.empty:
+            logger.warning("После объединения факт/прогноз данных нет.")
+        else:
+            logger.info("Объединили %d точек (с %s по %s).",
+                             len(data), data['hour'].min(), data['hour'].max())
+        return data
+    
+    def evaluate_metrics(self, data: pd.DataFrame):
+        '''Возвращает словарь метрик и data с колонками ошибок
+
+        Args: 
+
+        Returns:
+            
         '''
 
-        #self.loader_csv.load_predict
-        real = load_csv_file(path_time_series)
-        predict = load_csv_file(path_predict)
+        if data.empty:
+            return {"mae": np.nan, "mse": np.nan, "rmse": np.nan}, data
+        
+        data = data.copy()
+        err = data['log_count'] - data['prediction']
+        data['abs_err'] = err.abs()
+        data['sq_err'] = err.pow(2)
 
-        real['hour'] = pd.to_datetime(real['hour'], errors='coerce')
-        predict['hour'] = pd.to_datetime(predict['hour'], errors='coerce')
+        mae = data['abs_err'].mean()
+        mse = data['sq_err'].mean()
+        rmse = np.sqrt(mse)
 
-        print("real columns:", real.columns, real.info())
-        print("predict columns:", predict.columns, predict.info())
+        metrics = {
+            "mae": float(mae),
+            "mse": float(mse),
+            "rmse": float(rmse),
+            "points": int(len(data))}#,
+            #"generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        #}
 
-        merged = pd.merge(real, predict, on='timestamp', how='inner')
+        return metrics, data
 
-        mae = abs(merged['log_level'] - merged['prediction'])
-        logger.info(f"MAE: {mae}")
-        return mae
+    def save_evaluation():
+        col = ['hour', 'prediction', 'abs_err', 'sq_err']
+

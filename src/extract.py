@@ -7,23 +7,23 @@ from datetime import datetime
 from typing import Optional, List, Any
 from dotenv import load_dotenv
 
-from src.logger_config import logger
-from src.forecast import TrainModel
-#from src.transform import Preprocessing
-from src.evaluation import Metrics
+from logger_config import logger
+from forecast import TrainModel
+from transform import Preprocessing
+from evaluation import Evaluator
 
 class Run:
     def __init__(self):
         self.params = LoadParams()
         self.loader_data = LogDataLoader()
         self.loader_csv = LoaderCsvFile()
-        #self.preprocessing = Preprocessing()
+        self.preprocessing = Preprocessing()
         self.loader_model = TrainModel()
-        self.evaluation = Metrics()
+        self.evaluation = Evaluator()
         self.DB_PARAMS = None
         self.data = None
 
-    def execute(self):
+    def execute(self, start_ts: str | None = None, end_ts: str | None = None):
         # Загружаем параметры подключения
         try:
             self.DB_PARAMS = self.load_params()             
@@ -33,7 +33,8 @@ class Run:
 
         # Загружаем данные из БД
         try:
-            self.data = self.get_data_db(self.DB_PARAMS)             
+            self.data = self.get_data_db(self.DB_PARAMS, start_ts=start_ts, end_ts=end_ts)  
+           #self.preprocessing.clean_last_line(self.params.PATH_LOGS)
         except Exception as e:
             logger.exception("Шаг get_data_db провалился: %s", e)
             return
@@ -56,10 +57,10 @@ class Run:
         self.DB_PARAMS = self.params.get_db_params()
         return self.DB_PARAMS
 
-    def get_data_db(self, DB_PARAMS):
+    def get_data_db(self, DB_PARAMS, start_ts, end_ts):
         data_list = []
         count = 0
-        for data_chunk in self.loader_data.get_data(DB_PARAMS):
+        for data_chunk in self.loader_data.get_data(DB_PARAMS, start_ts=start_ts, end_ts=end_ts):
             count += len(data_chunk)
             logger.info(f'Получено {count} данных.') 
             self.loader_csv.save_csv_file(data_chunk, self.params.PATH_LOGS)
@@ -132,24 +133,32 @@ class LogDataLoader:
         self.loader = LoaderCsvFile()
         self.get_query = GetInterval()
 
-    def get_data(self, DB_PARAMS):
+    def get_data(self, DB_PARAMS, start_ts: str | None = None, end_ts: str | None = None):
         try:
             with psycopg2.connect(**DB_PARAMS) as conn:
                 with conn.cursor(name='batched_cursor') as cursor:
-                    if not os.path.exists(self.params.PATH_LOGS):
-                        logger.info(f"Загружаем все данные из БД.")
-                        cursor.execute(f"""SELECT DATE_TRUNC('hour', timestamp) AS time, COUNT(*) AS log_count
-                                            FROM logs
-                                            GROUP BY time
-                                            ORDER BY time;""")
+                    if start_ts and end_ts and os.path.exists(self.params.PATH_LOGS):
+                        sql = """
+                            SELECT date_trunc('hour', timestamp) AS hour,
+                                COUNT(*) AS log_count
+                            FROM logs
+                            WHERE timestamp >= %(start)s
+                            AND timestamp <  %(end)s
+                            GROUP BY hour
+                            ORDER BY hour;
+                        """
+                        cursor.execute(sql, {"start": start_ts, "end": end_ts})
                     else:
-                        data = self.loader.load_recent_logs(self.params.PATH_LOGS)
-                        interval_str = self.get_query.get_interval(data)
-                        cursor.execute(f"""SELECT DATE_TRUNC('hour', timestamp) AS time, COUNT(*) AS log_count
-                                            FROM logs
-                                            WHERE timestamp >= NOW() - INTERVAL '{interval_str}'
-                                            GROUP BY time
-                                            ORDER BY time;""")
+                        # первый запуск без окна — можно взять всё или ограничить ретеншном
+                        sql = """
+                            SELECT date_trunc('hour', timestamp) AS hour,
+                                COUNT(*) AS log_count
+                            FROM logs
+                            WHERE timestamp <  %(end)s
+                            GROUP BY hour
+                            ORDER BY hour;
+                        """
+                        cursor.execute(sql, {"end": end_ts})
 
                     while True:
                         rows = cursor.fetchmany(self.batch_size)
@@ -314,6 +323,20 @@ class LoaderCsvFile:
         return self.load_csv_file(path,
                             parse_dates=['hour'],
                             expected_columns=['hour', 'prediction'])
+    
+    def load_evaluation(self, path):
+        '''
+        Функция загрузки файла evaluation_arima.csv
+
+        Args:
+            path (str): Путь к CSV файлу
+
+        Returns:
+            DataFrame: Загруженный DataFrame или пустой DataFrame с нужными колонками
+        '''
+        return self.load_csv_file(path,
+                            parse_dates=['hour'],
+                            expected_columns=['hour', 'mae', 'mse'])
 
 class LoaderModel:
     def __init__(self):
