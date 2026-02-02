@@ -4,18 +4,20 @@ __pycache__/
 # Virtual environments
 venv_linux/
 venv_windows/
+airflow_venv/
 
 # Environment variables
 .env
 
+# DAGs files
+dags/
+
 # Logs and data files
+data/
 logging.log
-recent_logs.csv
-predict_arima.csv
 
 # Temporary or dev files
 start.py
-test.py
 
 # Config files
 # Keep Dockerfile and any other setup config, but not temp files
