@@ -1,28 +1,31 @@
-# Byte-compiled
+# Файлы компиляции
 __pycache__/
 
-# Virtual environments
+# Виртуальные окружения
 venv_linux/
 venv_windows/
 airflow_venv/
 
-# Environment variables
+# Переменные окружения
 .env
 
-# DAGs files
+# DAGs файлы
 dags/
 
-# Logs and data files
+# Логи и данные
 data/
 logging.log
 
-# Temporary or dev files
+# Тестовый файл
 start.py
 
-# Config files
-# Keep Dockerfile and any other setup config, but not temp files
-Dockerfile
+# Файлы конфигурации докера
+docker/
+docker-compose.yml
 
 # Other optional additions
 *.bak
 *.swp
+
+# Временные файлы 
+remove.txt

@@ -1,0 +1,1 @@
+#Тест FastAPI эндпоинтов (health/predict/reload), часто через TestClient.
