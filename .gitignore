@@ -26,6 +26,7 @@ docker-compose.yml
 # Other optional additions
 *.bak
 *.swp
+.vscode
 
 # Временные файлы 
 remove.txt

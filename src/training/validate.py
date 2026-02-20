@@ -5,3 +5,11 @@
 #сравнивает с порогами (MIN_F1, etc.)
 
 #решает “можно деплоить или нет”.
+
+
+class Validate():
+    def __init__():
+        pass
+
+    def eval():
+        pass

@@ -1,8 +1,21 @@
-from dataclasses import dataclass
+from dataclasses import dataclass           # Для создания классов с автоматически генерируемыми методами
+import pandas as pd                         # Для работы с данными (DataFrame)
+from typing import Optional, List, Any      # Для аннотаций типов
 
-#Реальная логика: чистка, токенизация, фичи, нормализация.
+import logging                              # Для логирования событий в коде
 
-#Должен быть детерминированным и максимально одинаковым в train/inference.
+import os                                   # Для работы с путями и директориями
+import sys                                  # Для работы с путями поиска модулей
+
+# Настройка пути к проекту
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, PROJECT_ROOT)    
+
+from datetime import datetime               # Для работы с датой и временем
+
+# Описание процесса работы с данными (чистка, токенизация, нормализация)
+# Реальная логика: чистка, токенизация, фичи, нормализация.
+# Должен быть детерминированным и максимально одинаковым в train/inference.
 
 @dataclass(frozen=True)
 class PreprocessResult:
@@ -15,6 +28,7 @@ def preprocess(text: str) -> PreprocessResult:
 
 class GetInterval:
     def __init__(self):
+        from src.training.data_loader import LoadParams, LoaderCsvFile
         self.params = LoadParams()                          
         self.loader = LoaderCsvFile()
 
@@ -27,21 +41,21 @@ class GetInterval:
             last_time (datetime): Возвращаем последнее время в файле recent_logs
         '''
         if data is None or data.empty:
-            logger.error("Данных нет.")
+            logging.error("Данных нет.")
             raise
         
         if 'hour' not in data.columns:
-            logger.error("Колонка 'hour' отсутствует.")
+            logging.error("Колонка 'hour' отсутствует.")
             raise
 
 
         last_time = data['hour'].max()
 
         if pd.isna(last_time):
-            logger.error("Не удалось извлечь дату.")
+            logging.error("Не удалось извлечь дату.")
             raise
 
-        logger.info(f"Получаем последнее время: {last_time}")
+        logging.info(f"Получаем последнее время: {last_time}")
         return last_time
     
     def get_interval(self, data: pd.DataFrame) -> Optional[str]:
@@ -59,8 +73,8 @@ class GetInterval:
         try:
             time_diff = datetime.now() - last_time
             interval = f"{max(1, int(time_diff.total_seconds() / 60))} minutes"
-            logger.info(f"Интервал загрузки: {interval}")
+            logging.info(f"Интервал загрузки: {interval}")
             return interval
         except Exception as e:
-            logger.error(f"Ошибка при расчёте интервала: {e}")
+            logging.error(f"Ошибка при расчёте интервала: {e}")
             raise           

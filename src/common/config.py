@@ -3,6 +3,7 @@ import logging
 from dotenv import load_dotenv
 import psycopg2
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 
 logger = logging.getLogger(__name__)
 
@@ -28,8 +29,7 @@ class Settings(BaseSettings):
     db_name: str = os.getenv("DB_NAME")
     db_user: str = os.getenv("DB_USER")
     db_password: str = os.getenv("DB_PASSWORD")
-    db_exconn: str = os.getenv("DB_EXCONN")
-    db_inconn: str = os.getenv("DB_INCONN")
+    db_ip: str = os.getenv("DB_INCONN")
     db_port: str = os.getenv("DB_PORT")
 
     # Пути до файлов
@@ -47,7 +47,7 @@ class Settings(BaseSettings):
             'dbname': self.db_name,
             'user': self.db_user,
             'password': self.db_password,
-            'host': self.db_inconn,
+            'host': self.db_ip,
             'port': self.db_port
         }
 
@@ -66,15 +66,11 @@ class LoadParams:
         Получает параметры подключения к базе данных с обработкой ошибок.
         """
         try:
-            # Пробуем подключиться по внутреннему IP
+            # Подключение
             with psycopg2.connect(**self.settings.DB_PARAMS, connect_timeout=2) as conn:
-                logger.info("Подключение по локальной сети.")
+                logger.info("Подключение успешно.")
                 return self.settings.DB_PARAMS
-        except psycopg2.OperationalError:
-            # Если не удалось подключиться, пробуем внешний IP
-            self.settings.DB_PARAMS['host'] = self.settings.db_exconn
-            logger.info("Подключение по внешней сети.")
-            return self.settings.DB_PARAMS
+
         except Exception as e:
             logger.error(f"Ошибка подключения к БД: {e}")
             raise

@@ -1,4 +1,6 @@
 from statsmodels.tsa.stattools import adfuller
+import os
+import sys
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -6,13 +8,19 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 from typing import Optional
 
+import logging  
+
 
 #from src.extract import LoadParams
-from logger_config import logger
+logger = logging.getLogger(__name__)   # Создание логгера для текущего модуля
 
-#params = LoadParams()
-#path_model = params.PATH_MODEL_ARIMA
-#path_time_series = params.PATH_TIME_SERIES
+# Настройка пути к проекту
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, PROJECT_ROOT) 
+
+from src.training.data_loader import LoadParams, DataLoader             # Настройки и параметры
+from src.training.train import TrainModel                               # Настройки и параметры
+from src.inference.service.predictor import Evaluator                   # Настройки и параметры
 
 def adfuller_test(data):
     '''Проверяет ряд на стационарность с помощью теста Дики-Фуллера
@@ -46,27 +54,27 @@ def plot_predict():
 
     '''
 
-    time_series = LoadParams.load_csv_file(path_time_series)
+    #time_series = LoadParams.load_csv_file(path_time_series)
 
-    try:
-        model = LoadParams.load_model(path_model)
-        forecast_steps = 24
-        forecast_obj = model.get_forecast(steps=forecast_steps)
-        conf_int = forecast_obj.conf_int()
+    #try:
+        #model = LoadParams.load_model(path_model)
+        #forecast_steps = 24
+        #forecast_obj = model.get_forecast(steps=forecast_steps)
+        #conf_int = forecast_obj.conf_int()
 
-        plt.figure(figsize=(12, 6))
-        plt.plot(time_series, label='Исторические данные')
-        plt.plot(forecast_obj.predicted_mean, label='Прогноз',
-                 linestyle='dashed', color='red')
-        plt.fill_between(
-            conf_int.index, conf_int.iloc[:, 0], conf_int.iloc[:, 1], color='gray', alpha=0.3)
-        plt.xlabel('Дата')
-        plt.ylabel('Количество логов')
-        plt.legend()
-        plt.grid(True)
-        plt.show()
-    except:
-        logger.error("Модель не загружена")
+        #plt.figure(figsize=(12, 6))
+        #plt.plot(time_series, label='Исторические данные')
+        #plt.plot(forecast_obj.predicted_mean, label='Прогноз',
+                 #linestyle='dashed', color='red')
+        #plt.fill_between(
+            #conf_int.index, conf_int.iloc[:, 0], conf_int.iloc[:, 1], color='gray', alpha=0.3)
+        #plt.xlabel('Дата')
+        #plt.ylabel('Количество логов')
+        #plt.legend()
+        #plt.grid(True)
+        #plt.show()
+    #except:
+        #logger.error("Модель не загружена")
 
 
 def split_data(X, y):
