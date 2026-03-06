@@ -1,127 +1,230 @@
-#Главный скрипт обучения:
-
-#взять новые данные
-
-#preprocess (через common)
-
-#обучить модель
-
-#сохранить артефакт во временное место
-
-
 # Библиотеки для моделей машинного обучения
 import os
+import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima import auto_arima
+import pmdarima as pm
 from sklearn.model_selection import GridSearchCV
 
 from src.training.data_loader import LoadParams, DataLoader, LoaderModel    # Настройки и параметры
-from src.common.config import Settings, LoadParams                          # Настройки и параметры
+from src.common.config import Settings                                      # Настройки и параметры
 from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from prophet import Prophet
 
 import logging                                                              # Для логирования
 
-#from utils import adfuller_test
 logger = logging.getLogger(__name__)    # Создание логгера для текущего модуля
 
-class TrainModel():
+class Strategy():
     def __init__(self):
-        self.params = LoadParams() 
         self.settings = Settings()
-        self.loader_data = DataLoader()
-        self.loader_model = LoaderModel()
-
-    def load_or_train(self, DB_PARAMS):
-        '''Загружает модель, если она уже есть, иначе обучает с нуля
-
-        Args: 
-            data (DataFrame) : Данные для обучения модели
-
-        Returns:
-
-        '''
-        #DB_PARAMS = self.params.get_db_params()
-
-        # Путь до модели
-        path = self.settings.path_model_arima
+    
+    def get_query(self, path, update_days, train_days):
 
         # Проверка на наличие модели
-        if os.path.exists(path):
-            sql = '''SELECT start_time, log_count
+        if self.model_exists(path):
+            sql = f'''SELECT start_time, log_count
                         FROM aggregation_by_hour
-                        ORDER BY start_time DESC
-                        LIMIT 1;'''
+                        WHERE start_time >= now() - interval '{update_days} days'
+                        ORDER BY start_time;'''
+            return sql
             
-            logger.info("Файл найден.")
-
-            model_with_order = self.loader_model.load_model(path)                   # Загрузка модели
-            data = self.loader_data.get_data_from_aggregation(DB_PARAMS, sql)       # Загрузка данных
-            self.update_model(model_with_order, data)                               # Апдейт модели
         else:
-            sql = '''SELECT start_time, log_count
+            sql = f'''SELECT start_time, log_count
                         FROM aggregation_by_hour
-                        WHERE start_time >= now() - interval '30 days'
+                        WHERE start_time >= now() - interval '{train_days} days'
                         ORDER BY start_time;'''
             
             logger.warning("Файл модели не найден, обучаем с нуля.")
-
-            data = self.loader_data.get_data_from_aggregation(DB_PARAMS, sql)       # Загрузка данных
-            self.train_model(data)                                                  # Обучение с нуля
-
-
-    def train_model(self, data):
-        '''Функция где обучается модель
-
-        Args: 
-            data (DataFrame): Данные полученные с базы данных 
-
-        Returns:
-            model (hd5): Возвращает модель
-        '''
-        if data is None:
-            logger.info(f"Данные не загружены")
-
-        # Дифференцируем, если нестационарен
-        #if not adfuller_test(time_series):
-            #time_series = time_series.diff().dropna()
-
-        # Автоматический подбор параметров ARIMA
-        model_auto = auto_arima(
-            data,
-            seasonal=False,
-            trace=True,
-            suppress_warnings=True,
-            stepwise=False,             # Отключаем жадный поиск
-            max_p=7, max_q=7            # Даем шанс выбрать сложнее параметры
-        )
-
-        best_p, best_d, best_q = model_auto.order
-
-        # Обучение модели
-        model = ARIMA(data, order=(best_p, best_d, best_q)).fit()
-        self.loader_model.save_model((model, (best_p, best_d, best_q)), self.settings.path_model_arima)
-
-        return model
+            return sql
+    def model_exists(self, path: str) -> bool:
+        return os.path.exists(path)
 
 
-    def update_model(self, model_with_order, data):
-        '''Дообучает ARIMA-модель на новых данных
+class Estimator():
+    def __init__(self, fit_fn, update_fn):
+        self.settings = Settings()
+        self.loader_data = DataLoader()
+        self.loader_model = LoaderModel()
+        self.strategy = Strategy()
+        self.fit_fn = fit_fn
+        self.update_fn = update_fn
 
-        Args: 
-            data (DataFrame): Данные полученные с базы данных 
+    def fit(self, db_params, path):
+        query = self.strategy.get_query(path, self.settings.update_days, self.settings.train_days)
 
-        Returns:
-            model (hd5): Возвращает временной ряд
-        '''
+        data = self.loader_data.get_data_from_aggregation(db_params, query)
+        if data is None or len(data) == 0:
+            raise ValueError("Нет данных для обучения модели")
 
-        model, order = model_with_order
+        if self.strategy.model_exists(path):
+            # Файл модели найден
+            try:
+                model, params = self.loader_model.load_model(path)
 
-        if model is None:
-            logger.info("Модель не загружена")
+            # Неудалось загрузить модель / обучение с нуля
+            except Exception as e:
+                logger.warning("Не удалось загрузить модель, обучаем с нуля: %s", e, exc_info=True)
+                logger.info("Mode: train_after_load_failure")
+                model, params = self.fit_fn(data)
+                self.loader_model.save_model((model, params), path)
+                logger.info("Train window: %s -> %s, n=%s, params=%s",
+                            data.index.min(), data.index.max(), len(data), params)
+                return model
 
-        # Обновляем модель новыми наблюдениями
-        model = ARIMA(data, order=order, freq="H").fit()
+            # Файл модели найден / Дообучение модели
+            model, params = self.update_fn(data, params)
+            logger.info("Mode: update")
+            self.loader_model.save_model((model, params), path)
+            logger.info("Update window: %s -> %s, n=%s, params=%s",
+                        data.index.min(), data.index.max(), len(data), params)
+            return model
 
-        # Сохраняем обновленную модель
-        self.get_model.save_model((model, order), self.params.PATH_MODEL_ARIMA)
-        logger.info("Модель дообучена и сохранена.")
+        # Файл модели не найден / обучение с нуля 
+        model, params = self.fit_fn(data)
+        logger.info("Mode: train_from_scratch")
+        self.loader_model.save_model((model, params), path)
+        logger.info("Train window: %s -> %s, n=%s, params=%s",
+                    data.index.min(), data.index.max(), len(data), params)
+        return model      
+            
+
+def arima_fit(data):
+    model_auto = auto_arima(
+        data,
+        seasonal=False,
+        trace=False,
+        suppress_warnings=True,
+        stepwise=True,
+        max_p=7,
+        max_q=7
+    )
+    params = {"order": model_auto.order}
+    model = ARIMA(data, order=params["order"]).fit()
+    return model, params
+
+
+def arima_update(data, params):
+    if isinstance(params, tuple):
+        order = params
+    else:
+        order = params["order"]
+
+    model = ARIMA(data, order=order).fit()
+    return model, {"order": order}
+    
+def _series_to_prophet_df(data):
+    df = data.reset_index()
+    df.columns = ["ds", "y"]
+    return df
+
+
+def prophet_fit(data):
+    df = _series_to_prophet_df(data)
+
+    model = Prophet()
+    model.fit(df)
+
+    params = {
+        "model_type": "prophet"
+    }
+    return model, params
+
+def prophet_update(data, params):
+    df = _series_to_prophet_df(data)
+
+    model = Prophet()
+    model.fit(df)
+
+    return model, params
+
+class NaiveLastValueModel:
+    def __init__(self, last_value: float):
+        self.last_value = float(last_value)
+
+    def forecast(self, steps: int = 1):
+        return pd.Series([self.last_value] * steps)
+
+
+def naive_fit(data):
+    last_value = float(data.iloc[-1])
+    model = NaiveLastValueModel(last_value=last_value)
+    params = {"method": "last_value"}
+    return model, params
+
+
+def naive_update(data, params):
+    last_value = float(data.iloc[-1])
+    model = NaiveLastValueModel(last_value=last_value)
+    return model, params
+
+class SeasonalNaiveModel:
+    def __init__(self, history: pd.Series, season_length: int):
+        self.history = history.copy()
+        self.season_length = season_length
+
+    def forecast(self, steps: int = 1):
+        values = []
+        hist = self.history.tolist()
+
+        for i in range(steps):
+            idx = len(hist) - self.season_length + i
+            if idx < 0:
+                values.append(hist[-1])
+            else:
+                values.append(hist[idx])
+
+        return pd.Series(values)
+
+
+def seasonal_naive_fit(data, season_length: int = 24):
+    model = SeasonalNaiveModel(history=data, season_length=season_length)
+    params = {"season_length": season_length}
+    return model, params
+
+
+def seasonal_naive_update(data, params):
+    season_length = params["season_length"]
+    model = SeasonalNaiveModel(history=data, season_length=season_length)
+    return model, params
+
+
+
+
+def sarima_fit(data):
+    model_auto = pm.auto_arima(
+        data,
+        seasonal=True,
+        m=24,
+        trace=False,
+        suppress_warnings=True,
+        stepwise=True,
+        max_p=3,
+        max_q=3,
+        max_P=2,
+        max_Q=2
+    )
+
+    params = {
+        "order": model_auto.order,
+        "seasonal_order": model_auto.seasonal_order
+    }
+
+    model = SARIMAX(
+        data,
+        order=params["order"],
+        seasonal_order=params["seasonal_order"]
+    ).fit(disp=False)
+
+    return model, params
+
+
+def sarima_update(data, params):
+    model = SARIMAX(
+        data,
+        order=params["order"],
+        seasonal_order=params["seasonal_order"]
+    ).fit(disp=False)
+
+    return model, params

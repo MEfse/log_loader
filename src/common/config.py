@@ -34,10 +34,13 @@ class Settings(BaseSettings):
 
     # Пути до файлов
     path_model_arima: str = os.getenv("PATH_MODEL_ARIMA")
-    path_predict_arima: str = os.getenv("PATH_PREDICT_ARIMA")
+    path_model_prophet: str = os.getenv("PATH_MODEL_PROPHET")
     path_logs: str = os.getenv("PATH_LOGS")
     path_logging: str = os.getenv("PATH_LOGGING")
-    path_time_series: str = os.getenv("PATH_TIME_SERIES")
+
+    # Гиперпараметры
+    update_days : int = os.getenv("UPDATE_DAYS")
+    train_days : int = os.getenv("TRAIN_DAYS")
 
     DB_PARAMS: dict = {}
 
@@ -63,7 +66,7 @@ class LoadParams:
     
     def get_db_params(self):
         """
-        Получает параметры подключения к базе данных с обработкой ошибок.
+        Загрузка параметров подключения к базе данных с обработкой ошибок.
         """
         try:
             # Подключение

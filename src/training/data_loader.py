@@ -3,9 +3,10 @@ import os                                                               # Для
 import sys                                                              # Для работы с путями поиска модулей
 import pandas as pd                                                     # Для работы с данными (DataFrame)
 import psycopg2                                                         # Для работы с PostgreSQL
+from psycopg2.extras import execute_values
 import joblib                                                           # Для сериализации объектов
 from datetime import datetime                                           # Для работы с датой и временем
-from typing import Optional, List, Any                                  # Для аннотаций типов
+from typing import Generator, Optional, List, Any                                  # Для аннотаций типов
 import logging                                                          # Для логирования
 from pyspark.sql import SparkSession
 
@@ -15,18 +16,16 @@ sys.path.insert(0, PROJECT_ROOT)
 
 from src.common.config import Settings, LoadParams                      # Настройки и параметры
 from src.common.preprocessing.pipeline import preprocess, GetInterval   # Функции для обработки данных
-#from src.training.train import TrainModel                              # Модель для обучения
-from src.inference.service.predictor import Evaluator                   # Оценщик для инференса
 
 logger = logging.getLogger(__name__)                                    # Создание логгера для текущего модуля
+BATCH_SIZE = 10000
 
 #--------------Генератор загрузки данных---------------------------------------------------------------------
 class GeneratorDataLoader:
-    def __init__(self):
-        self.batch_size = 10000
-        self.params = LoadParams()  
+    def __init__(self, batch_size: int = BATCH_SIZE):
+        self.batch_size = batch_size
 
-    def get_data(self, sql: str | None = None, start_ts: str | None = None, end_ts: str | None = None):
+    def get_data(self, conn, sql: str | None = None, start_ts: str | None = None, end_ts: str | None = None) -> Generator[pd.DataFrame, None, None]:
         '''
         Генератор загрузки данных из БД.
 
@@ -37,9 +36,15 @@ class GeneratorDataLoader:
         Returns:
             (DataFrame): Чанк данных.
         '''
+        start_dt = pd.to_datetime(start_ts, errors="coerce")
+        end_dt = pd.to_datetime(end_ts, errors="coerce")
 
-        # Используем параметры из LoadParams для подключения
-        DB_PARAMS = self.params.get_db_params()  
+        if pd.isna(start_dt) or pd.isna(end_dt):
+            raise ValueError("Нужно передать корректные start_ts и end_ts (ISO формат).")
+        if start_dt >= end_dt:
+            raise ValueError("start_ts должен быть меньше end_ts.")
+        
+        columns = ['start_time', 'end_time', 'log_count']       # Формируем столбцы 
 
         # Запрос в БД 
         default_sql  = """SELECT date_trunc('hour', timestamp) AS start_time,
@@ -54,35 +59,37 @@ class GeneratorDataLoader:
         query = sql if sql is not None else default_sql
 
         try:
-            # Создаем соединение с БД
-            with psycopg2.connect(**DB_PARAMS) as conn:                  
-                with conn.cursor(name='batched_cursor') as cursor:   
-                    
-                    cursor.execute(query, {"start": start_ts, "end": end_ts}) 
+            with conn.cursor(name=f"batched_cursor_{id(self)}") as cursor:
+                cursor.itersize = self.batch_size
+                cursor.execute(query, {"start": start_dt, "end": end_dt})
 
-                    while True:
-                        rows = cursor.fetchmany(self.batch_size)        # Батч-данных
-                        if not rows:                                    # Если нет данных выход из цикла                                  
-                            break
-                        chunk_df = pd.DataFrame(rows, columns=['start_time', 'end_time', 'log_count']) # Формирование датафрейма с данными
-                        yield chunk_df
+                while True:
+                    rows = cursor.fetchmany(self.batch_size)        # Батч-данных
+                    if not rows:                                    # Если нет данных выход из цикла                                  
+                        break
+                    chunk_df = pd.DataFrame(rows, columns=columns)  # Формирование датафрейма с данными
+                    yield chunk_df
 
+
+        except psycopg2.Error as e:
+            logger.error(f"Ошибка работы с PostgreSQL: {e}.", exc_info=True)
+            raise
         # При неудачном соединение с БД
         except Exception as e:
-            logger.error(f"Ошибка при соединении с БД: {e}.")
+            logger.error(f"Ошибка при обработке чанка: {e}.", exc_info=True)
             raise
 
 #--------------Загрузка из БД---------------------------------------------------------------------
 class DataLoader:
-    def __init__(self):
+    def __init__(self) -> None:
         self.loader_data = GeneratorDataLoader()
 
-    def get_data_from_db(self, DB_PARAMS, start_ts, end_ts):
+    def get_data_from_db(self, db_params, start_ts, end_ts):
         """
         Загружает данные из БД с учетом временных рамок и записывает их в таблицу агрегатов.
 
         Args:
-            DB_PARAMS (dict): Параметры для подключения к базе данных.
+            db_params (dict): Параметры для подключения к базе данных.
             start_ts (str): Начало временного отрезка загрузки данных.
             end_ts (str): Конец временного отрезка загрузки данных.
 
@@ -94,14 +101,15 @@ class DataLoader:
         upsert_sql = """INSERT INTO aggregation_by_hour (start_time, end_time, log_count)
                                         VALUES (%s, %s, %s)
                                         ON CONFLICT (start_time) 
-                                        DO UPDATE SET log_count = EXCLUDED.log_count;"""
+                                        DO UPDATE SET end_time = EXCLUDED.end_time,
+                                                        log_count = EXCLUDED.log_count;"""
         try:
             # Создаем соединение с БД
-            with psycopg2.connect(**DB_PARAMS) as conn:                 
+            with psycopg2.connect(**db_params) as conn:                 
                 with conn.cursor() as cursor:                       
 
-                    for data_chunk in self.loader_data.get_data(start_ts=start_ts, end_ts=end_ts):
-                        if data_chunk is None or data_chunk.empty:
+                    for data_chunk in self.loader_data.get_data(conn, start_ts=start_ts, end_ts=end_ts):
+                        if data_chunk.empty:
                             logger.info("Нет данных за окно %s - %s", start_ts, end_ts)
                             continue
 
@@ -120,22 +128,22 @@ class DataLoader:
                         logger.info("Записано/обновлено %s строк (часов) за чанк; логов в чанке: %s; всего логов: %s", 
                                         len(values), chunk_logs, total_logs)
 
-                # Зафиксировать изменения после обработки всех чанков
-                conn.commit()
+                    # Зафиксировать изменения после обработки чанка
+                    conn.commit()
 
                 # Логируем финальный результат
                 logger.info("Готово. Окно %s - %s: обновлено часов: %s, логов: %s",
                                 start_ts, end_ts, total_rows, total_logs)
         except Exception as e:
-            logger.error(f"Ошибка при чтении/записи агрегатов: {e}")
+            logger.error(f"Ошибка при чтении/записи агрегатов: {e}", exc_info=True)
             raise
 
-    def get_data_from_aggregation(self, DB_PARAMS, sql):
+    def get_data_from_aggregation(self, db_params, sql):
         """
         Загружает данные из БД с учетом временных рамок и записывает их в таблицу агрегатов.
 
         Args:
-            DB_PARAMS (dict): Параметры для подключения к базе данных.
+            db_params (dict): Параметры для подключения к базе данных.
             start_ts (str): Начало временного отрезка загрузки данных.
             end_ts (str): Конец временного отрезка загрузки данных.
 
@@ -144,19 +152,26 @@ class DataLoader:
         """
 
         try:
-            with psycopg2.connect(**DB_PARAMS) as conn:
+            with psycopg2.connect(**db_params) as conn:
                 with conn.cursor() as cursor:
 
                     cursor.execute(sql)
                     rows = cursor.fetchall()
                     df = pd.DataFrame(rows, columns=["start_time", "log_count"])
-                    #print(df.head(5))
-                    #print(df.info())
-                    return df.set_index("start_time")["log_count"]
+                    df["start_time"] = pd.to_datetime(df["start_time"])
+                    df = df.sort_values("start_time")
+                    s = df.set_index("start_time")["log_count"]
+
+                    s = s.asfreq("H").fillna(0)
+
+                    return s
                 
         except Exception as e:
-            logger.error(f"Ошибка при чтении aggregation_by_hour: {e}")
+            logger.error(f"Ошибка при чтении aggregation_by_hour: {e}", exc_info=True)
             raise
+
+    def get_data_for_model():
+        pass
 
 #--------------Загрузка модели--------------------------------------------------------------------- 
 class LoaderModel:
@@ -174,9 +189,10 @@ class LoaderModel:
         '''
         try:
             # Загружаем обученную модель
+            logger.info(f"Модель загружена.")
             return joblib.load(path)
         except FileNotFoundError:
-            logger.warning("Файл модели не найден.")
+            logger.warning(f"Файл модели не найден.")
             raise
 
 
@@ -192,10 +208,10 @@ class LoaderModel:
         '''
         if model_with_order:
             joblib.dump(model_with_order, path)
-            logger.info("Файл модели сохранен.")
+            logger.info(f"Файл модели сохранен.")
             return model_with_order
         else:
-            logger.error("Модель не удалось сохранить.")
+            logger.error(f"Модель не удалось сохранить.")
             raise
 
 #--------------Spark---------------------------------------------------------------------
