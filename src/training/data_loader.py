@@ -162,7 +162,7 @@ class DataLoader:
                     df = df.sort_values("start_time")
                     s = df.set_index("start_time")["log_count"]
 
-                    s = s.asfreq("H").fillna(0)
+                    s = s.asfreq("h").fillna(0)
 
                     return s
                 

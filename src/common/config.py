@@ -35,7 +35,6 @@ class Settings(BaseSettings):
     # Пути до файлов
     path_model_arima: str = os.getenv("PATH_MODEL_ARIMA")
     path_model_prophet: str = os.getenv("PATH_MODEL_PROPHET")
-    path_logs: str = os.getenv("PATH_LOGS")
     path_logging: str = os.getenv("PATH_LOGGING")
 
     # Гиперпараметры

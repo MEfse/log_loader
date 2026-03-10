@@ -17,10 +17,18 @@ import logging                                                              # Д
 logger = logging.getLogger(__name__)    # Создание логгера для текущего модуля
 
 class Strategy():
-    def __init__(self):
-        self.settings = Settings()
-    
-    def get_query(self, path, update_days, train_days):
+    def get_query(self, path, update_days, train_days) -> str:
+        """
+        Выдает запрос с временным окном в зависимости от наличия модели.
+
+        Args:
+            path (dict): Путь до модели.
+            update_days (str): Начало временного отрезка загрузки данных.
+            train_days (str): Конец временного отрезка загрузки данных.
+
+        Returns:
+            sql (str): Запрос для базы данных.
+        """
 
         # Проверка на наличие модели
         if self.model_exists(path):
@@ -28,17 +36,30 @@ class Strategy():
                         FROM aggregation_by_hour
                         WHERE start_time >= now() - interval '{update_days} days'
                         ORDER BY start_time;'''
-            return sql
             
+            logger.info(f"Обучаем за последние {update_days} дней.")
+            return sql
+        
+        # При отсутствии модели    
         else:
             sql = f'''SELECT start_time, log_count
                         FROM aggregation_by_hour
                         WHERE start_time >= now() - interval '{train_days} days'
                         ORDER BY start_time;'''
             
-            logger.warning("Файл модели не найден, обучаем с нуля.")
+            logger.info(f"Обучаем за последние {train_days} дней.")
             return sql
+        
     def model_exists(self, path: str) -> bool:
+        """
+        Проверка на наличии модели.
+
+        Args:
+            path (dict): Путь до модели.
+
+        Returns:
+            os.path.exists (bool): Возращает True при наличии модели / False при ее отсутствии
+        """
         return os.path.exists(path)
 
 
@@ -52,12 +73,15 @@ class Estimator():
         self.update_fn = update_fn
 
     def fit(self, db_params, path):
+        # Получение запроса для базы данных
         query = self.strategy.get_query(path, self.settings.update_days, self.settings.train_days)
 
+        # Загрузка данных
         data = self.loader_data.get_data_from_aggregation(db_params, query)
         if data is None or len(data) == 0:
             raise ValueError("Нет данных для обучения модели")
 
+        # Проверка на наличие модели
         if self.strategy.model_exists(path):
             # Файл модели найден
             try:
@@ -66,26 +90,25 @@ class Estimator():
             # Неудалось загрузить модель / обучение с нуля
             except Exception as e:
                 logger.warning("Не удалось загрузить модель, обучаем с нуля: %s", e, exc_info=True)
-                logger.info("Mode: train_after_load_failure")
                 model, params = self.fit_fn(data)
                 self.loader_model.save_model((model, params), path)
-                logger.info("Train window: %s -> %s, n=%s, params=%s",
+                logger.info("Окно обучения: %s -> %s, n=%s, params=%s",
                             data.index.min(), data.index.max(), len(data), params)
                 return model
 
             # Файл модели найден / Дообучение модели
             model, params = self.update_fn(data, params)
-            logger.info("Mode: update")
+            logger.info("Файл модели найден. Дообучаем модель.")
             self.loader_model.save_model((model, params), path)
-            logger.info("Update window: %s -> %s, n=%s, params=%s",
+            logger.info("Окно дообучения: %s -> %s, n=%s, params=%s",
                         data.index.min(), data.index.max(), len(data), params)
             return model
 
         # Файл модели не найден / обучение с нуля 
         model, params = self.fit_fn(data)
-        logger.info("Mode: train_from_scratch")
+        logger.info("Файл модели не найден, обучаем с нуля.")
         self.loader_model.save_model((model, params), path)
-        logger.info("Train window: %s -> %s, n=%s, params=%s",
+        logger.info("Окно обучения: %s -> %s, n=%s, params=%s",
                     data.index.min(), data.index.max(), len(data), params)
         return model      
             

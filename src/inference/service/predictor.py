@@ -31,9 +31,10 @@ class Evaluator():
         """Прогноз на 1 час вперед"""
 
         try:
+            # Загрузка модели
             model, _ = self.loader_model.load_model(path)
 
-            # 1) Время прогноза
+            # Время прогноза
             if end_ts is None:
                 base = datetime.now().replace(minute=0, second=0, microsecond=0)
             else:
@@ -43,11 +44,13 @@ class Evaluator():
             forecast_start = base + timedelta(hours=1)
             forecast_end = forecast_start + timedelta(hours=1)
 
-            # 2) Прогноз в зависимости от модели
+            # Прогноз в зависимости от модели
+            # ARIMA
             if model_version == "arima":
                 forecast = model.forecast(steps=1)
                 predicted_value = float(forecast.iloc[0])
-
+            
+            # Prophet
             elif model_version == "prophet":
                 forecast_start_naive = pd.Timestamp(forecast_start)
 
@@ -58,9 +61,11 @@ class Evaluator():
                 forecast_df = model.predict(future)
                 predicted_value = float(forecast_df["yhat"].iloc[0])
 
+            # Исключение
             else:
                 raise ValueError(f"Неизвестная модель: {model_version}")
 
+            # Запрос 
             insert_sql = f"""
                 INSERT INTO forecast (
                     forecast_start_time,
@@ -76,17 +81,13 @@ class Evaluator():
                     model_version     = EXCLUDED.model_version;
             """
 
+            # Коннект до базы данных 
             with psycopg2.connect(**db_params) as conn:
                 with conn.cursor() as cur:
-                    cur.execute(
-                        insert_sql,
-                        (forecast_start, forecast_end, predicted_value, model_version),
-                    )
+                    cur.execute(insert_sql, (forecast_start, forecast_end, predicted_value, model_version))
 
-            logger.info(
-                "Forecast saved: %s -> %s, value=%s, model_version=%s",
-                forecast_start, forecast_end, predicted_value, model_version
-            )
+            logger.info("Forecast saved: %s -> %s, value=%s, model_version=%s",
+                forecast_start, forecast_end, predicted_value, model_version)
 
             return predicted_value
 
