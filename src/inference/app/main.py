@@ -14,7 +14,6 @@ import logging                          # Для логирования
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, PROJECT_ROOT)
 
-from fastapi import FastAPI
 from src.inference.service.predictor import Evaluator
 from src.common.config import LoadParams                                  # Настройки и параметры
 
@@ -33,7 +32,7 @@ def health():
     return {"status": "ok"}
 
 # --------------------
-# GET /forecast (оставляем как было)
+# GET /forecast 
 # --------------------
 @app.get("/forecast")
 def get_forecast():
@@ -48,7 +47,7 @@ def get_forecast():
         raise HTTPException(status_code=500, detail=str(e))
 
 # --------------------
-# POST /predict (как ты хотел)
+# POST /predict 
 # --------------------
 class PredictResponse(BaseModel):
     forecast_start: str
@@ -63,7 +62,6 @@ def predict():
         ev = Evaluator()
         result = ev.predict(params)
 
-        # Если сейчас predict возвращает только число — упакуем в dict
         if not isinstance(result, dict):
             raise HTTPException(
                 status_code=500,
